@@ -5,7 +5,9 @@
  */
 package com.controller;
 
+import com.model.entidades.Montadora;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ListCell;
 
 /**
  *
@@ -34,5 +36,5 @@ public abstract class AbstractUIUtils {
     protected void alertInfoAdiciona(String tipo, String nome) {
         alertInfo(tipo + " " + nome + " foi cadastrado(a) com sucesso!");
     }
-
+    
 }

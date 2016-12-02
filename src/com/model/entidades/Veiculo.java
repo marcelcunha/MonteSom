@@ -29,9 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Veiculo.findAll", query = "SELECT v FROM Veiculo v"),
     @NamedQuery(name = "Veiculo.findByCod", query = "SELECT v FROM Veiculo v WHERE v.cod = :cod"),
-    @NamedQuery(name = "Veiculo.findByNome", query = "SELECT v FROM Veiculo v WHERE v.nome = :nome"),
-    @NamedQuery(name = "Veiculo.findByPortas", query = "SELECT v FROM Veiculo v WHERE v.portas = :portas"),
-    @NamedQuery(name = "Veiculo.findByModelo", query = "SELECT v FROM Veiculo v WHERE v.modelo = :modelo")})
+    @NamedQuery(name = "Veiculo.findByNome", query = "SELECT v FROM Veiculo v WHERE v.nome = :nome")})
 public class Veiculo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,10 +40,6 @@ public class Veiculo implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @Column(name = "portas")
-    private Short portas;
-    @Column(name = "modelo")
-    private String modelo;
     @JoinColumn(name = "cod_marca", referencedColumnName = "cod_marca")
     @ManyToOne
     private Montadora codMarca;
@@ -57,9 +51,9 @@ public class Veiculo implements Serializable {
         this.cod = cod;
     }
 
-    public Veiculo(Integer cod, String nome) {
-        this.cod = cod;
+    public Veiculo(String nome, Montadora codMarca) {
         this.nome = nome;
+        this.codMarca = codMarca;
     }
 
     public Integer getCod() {
@@ -76,22 +70,6 @@ public class Veiculo implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Short getPortas() {
-        return portas;
-    }
-
-    public void setPortas(Short portas) {
-        this.portas = portas;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
     }
 
     public Montadora getCodMarca() {

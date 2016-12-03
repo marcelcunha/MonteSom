@@ -5,6 +5,7 @@
  */
 package com.controller;
 
+import com.controller.utils.AbstractUIUtils;
 import com.model.DAO.MontadoraDao;
 import com.model.DAO.VeiculoDao;
 import com.model.entidades.Montadora;
@@ -29,7 +30,7 @@ import javafx.util.Callback;
  * @author Marcel
  */
 public class ModeloController extends AbstractUIUtils implements Initializable {
-    
+
     @FXML
     private ComboBox<Short> portasCBB;
 
@@ -41,24 +42,28 @@ public class ModeloController extends AbstractUIUtils implements Initializable {
 
     @FXML
     private TextField descTF;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       portasCBB.getItems().addAll((short)2,(short)3,(short)4);
-       marcaCBB.setItems(preencheMarcaCBB());
-       marcaCBB.setCellFactory(marcaCBBFactory());
-       marcaCBB.setButtonCell(cell());
-       marcaCBB.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Montadora>() {
+        modeloCBB.setDisable(true);
 
-           @Override
-           public void changed(ObservableValue<? extends Montadora> observable, Montadora oldValue, Montadora newValue) {
-               modeloCBB.setItems(preencheVeiculoCBB(newValue.getCodMarca()));
-           }
-       });
-      // 
-       
-       
-    }    
+        portasCBB.getItems().addAll((short) 2, (short) 3, (short) 4);
+
+        marcaCBB.setItems(preencheMarcasCBB());
+        marcaCBB.getSelectionModel()
+                .selectedItemProperty().addListener(
+                        new ChangeListener<Montadora>() {
+
+                            @Override
+                            public void changed(
+                                    ObservableValue<? extends Montadora> observable,
+                                    Montadora oldValue, Montadora newValue) {
+                                        modeloCBB.setDisable(false);
+                                        modeloCBB.setItems(preencheVeiculoCBB(newValue));
+                                    }
+                        });
+
+    }
 
     @Override
     protected boolean verificaCampos() {
@@ -74,47 +79,14 @@ public class ModeloController extends AbstractUIUtils implements Initializable {
     protected void limparCampos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    private ObservableList<Montadora> preencheMarcaCBB() {
-        ObservableList<Montadora> list = FXCollections.observableArrayList();
-         MontadoraDao mDao = new MontadoraDao();
 
-        list.addAll(mDao.getList());
-
-        return list;
-    }
-    
-     private ObservableList<Veiculo> preencheVeiculoCBB(int id) {
+    private ObservableList<Veiculo> preencheVeiculoCBB(Montadora m) {
         ObservableList<Veiculo> list = FXCollections.observableArrayList();
         VeiculoDao vDao = new VeiculoDao();
 
-        list.addAll(vDao.getListFromMarca(id));
+        list.addAll(vDao.getListFromMarca(m));
 
         return list;
     }
-     
-    private Callback<ListView<Montadora>, ListCell<Montadora>> marcaCBBFactory() {
-        return new Callback<ListView<Montadora>, ListCell<Montadora>>() {
 
-            @Override
-            public ListCell<Montadora> call(ListView<Montadora> param) {
-                return cell();
-            }
-        };
-    }
-
-    private ListCell<Montadora> cell() {
-        final ListCell<Montadora> cell = new ListCell<Montadora>() {
-
-            @Override
-            protected void updateItem(Montadora item, boolean empty) {
-                super.updateItem(item, empty);
-                if (!empty) {
-                    setText(item.getNomeMarca());
-                 //   
-                }
-            }
-        };
-        return cell;
-    }
 }

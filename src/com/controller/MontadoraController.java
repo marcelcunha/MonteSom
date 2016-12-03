@@ -5,7 +5,7 @@
  */
 package com.controller;
 
-import com.controller.AbstractUIUtils;
+import com.controller.utils.AbstractUIUtils;
 import com.model.DAO.MontadoraDao;
 import com.model.entidades.Montadora;
 import java.net.URL;

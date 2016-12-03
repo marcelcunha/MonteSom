@@ -108,7 +108,7 @@ public class Veiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.model.entidades.Veiculo[ cod=" + cod + " ]";
+        return nome;
     }
 
     @XmlTransient

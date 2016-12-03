@@ -93,7 +93,7 @@ public class Montadora implements Serializable {
 
     @Override
     public String toString() {
-        return "com.model.entidades.Montadora[ codMarca=" + codMarca + " ]";
+        return nomeMarca;
     }
 
     @XmlTransient

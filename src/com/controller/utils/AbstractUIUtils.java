@@ -3,11 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller;
+package com.controller.utils;
 
+import com.model.DAO.MontadoraDao;
 import com.model.entidades.Montadora;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.util.Callback;
 
 /**
  *
@@ -37,4 +42,16 @@ public abstract class AbstractUIUtils {
         alertInfo(tipo + " " + nome + " foi cadastrado(a) com sucesso!");
     }
     
+    /**
+     *
+     * @return
+     */
+    protected ObservableList<Montadora> preencheMarcasCBB() {
+        ObservableList<Montadora> list = FXCollections.observableArrayList();
+        MontadoraDao dao = new MontadoraDao();
+
+        list.addAll(dao.getList());
+
+        return list;
+    }
 }

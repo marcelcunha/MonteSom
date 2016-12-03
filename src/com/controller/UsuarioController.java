@@ -5,7 +5,7 @@
  */
 package com.controller;
 
-import com.controller.AbstractUIUtils;
+import com.controller.utils.AbstractUIUtils;
 import com.model.DAO.UsuarioDao;
 import com.model.entidades.Usuario;
 import java.net.URL;

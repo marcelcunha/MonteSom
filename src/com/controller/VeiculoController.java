@@ -5,6 +5,7 @@
  */
 package com.controller;
 
+import com.controller.utils.AbstractUIUtils;
 import com.model.DAO.MontadoraDao;
 import com.model.DAO.VeiculoDao;
 import com.model.entidades.Montadora;
@@ -42,8 +43,8 @@ public class VeiculoController extends AbstractUIUtils implements Initializable 
 
 
         marcaCBB.setItems(preencheMarcasCBB());
-        marcaCBB.setCellFactory(marcaCBBFactory());
-        marcaCBB.setButtonCell(cell());
+       /* marcaCBB.setCellFactory(super.marcaCBBFactory());
+        marcaCBB.setButtonCell(cell());*/
     }
 
     @Override
@@ -89,36 +90,5 @@ public class VeiculoController extends AbstractUIUtils implements Initializable 
      
     }
 
-    private ObservableList<Montadora> preencheMarcasCBB() {
-        ObservableList<Montadora> list = FXCollections.observableArrayList();
-        MontadoraDao dao = new MontadoraDao();
-
-        list.addAll(dao.getList());
-
-        return list;
-    }
-
-    private Callback<ListView<Montadora>, ListCell<Montadora>> marcaCBBFactory() {
-        return new Callback<ListView<Montadora>, ListCell<Montadora>>() {
-
-            @Override
-            public ListCell<Montadora> call(ListView<Montadora> param) {
-                return cell();
-            }
-        };
-    }
-
-    private ListCell<Montadora> cell() {
-        final ListCell<Montadora> cell = new ListCell<Montadora>() {
-
-            @Override
-            protected void updateItem(Montadora item, boolean empty) {
-                super.updateItem(item, empty);
-                if (!empty) {
-                    setText(item.getNomeMarca());
-                }
-            }
-        };
-        return cell;
-    }
+    
 }

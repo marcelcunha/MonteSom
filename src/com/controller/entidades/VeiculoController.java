@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller;
+package com.controller.entidades;
 
-import com.controller.utils.AbstractUIUtils;
+import com.controller.utils.AbstractControllerUtils;
 import com.model.DAO.MontadoraDao;
 import com.model.DAO.VeiculoDao;
 import com.model.entidades.Montadora;
@@ -29,7 +29,7 @@ import javafx.util.Callback;
  *
  * @author Marcel
  */
-public class VeiculoController extends AbstractUIUtils implements Initializable {
+public class VeiculoController extends AbstractControllerUtils implements Initializable {
 
     @FXML
     private TextField nomeTF;
@@ -62,7 +62,7 @@ public class VeiculoController extends AbstractUIUtils implements Initializable 
 
     @Override
     @FXML
-    protected void adicionar() {
+    public void adicionar() {
         Platform.runLater(new Runnable() {
 
             @Override
@@ -88,6 +88,16 @@ public class VeiculoController extends AbstractUIUtils implements Initializable 
         nomeTF.setText(null);
         marcaCBB.getSelectionModel().clearSelection();
      
+    }
+
+    @Override
+    public void excluir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alterar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.menus.CadastroController">
+    <children>
+            
+        <AnchorPane fx:id="anchorpane" prefHeight="500.0" prefWidth="800.0" stylesheets="@../style/menuLateral.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="fabricanteBTN" layoutX="133.0" layoutY="99.0" mnemonicParsing="false" onAction="#fabricanteButtonAction" text="Fabricante" />
+            <Button fx:id="veiculoBTN" layoutX="233.0" layoutY="250.0" mnemonicParsing="false" onAction="#veiculoButtonAction" text="Veículo" />
+            <Button fx:id="produtoBTN" layoutX="302.0" layoutY="158.0" mnemonicParsing="false" onAction="#produtoButtonAction" text="Produto" />
+            <Button fx:id="montadora" layoutX="331.0" layoutY="238.0" mnemonicParsing="false" onAction="#montadoraButtonAction" text="Montadora" />
+            <Button fx:id="prateleiraTBN" layoutX="513.0" layoutY="86.0" mnemonicParsing="false" onAction="#prateleiraButtonAction" text="Prateleira" />
+            <Button layoutX="461.0" layoutY="197.0" mnemonicParsing="false" text="d" />
+            <Button layoutX="522.0" layoutY="330.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="categoriaBTN" layoutX="172.0" layoutY="384.0" mnemonicParsing="false" onAction="#categoriaButtonAction" text="Categoria" />
+         </children></AnchorPane>
+    </children>
+    
+</AnchorPane>

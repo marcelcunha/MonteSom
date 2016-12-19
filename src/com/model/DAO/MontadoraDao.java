@@ -29,4 +29,9 @@ public class MontadoraDao extends GenericDao<Montadora, Long>{
        query.orderBy(builder.asc(root.get("nomeMarca")));
        return entityManager.createQuery(query).getResultList();
    }
+     
+    public Montadora encontrar(String nome){
+        return entityManager.createNamedQuery("Montadora.findByNomeMarca", Montadora.class)
+                .setParameter("nomeMarca", nome).getSingleResult();
+    }
 }

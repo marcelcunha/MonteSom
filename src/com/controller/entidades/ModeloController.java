@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller;
+package com.controller.entidades;
 
-import com.controller.utils.AbstractUIUtils;
+import com.controller.utils.AbstractControllerUtils;
 import com.model.DAO.MontadoraDao;
 import com.model.DAO.VeiculoDao;
 import com.model.entidades.Montadora;
@@ -16,6 +16,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -29,7 +31,7 @@ import javafx.util.Callback;
  *
  * @author Marcel
  */
-public class ModeloController extends AbstractUIUtils implements Initializable {
+public class ModeloController extends AbstractControllerUtils implements Initializable {
 
     @FXML
     private ComboBox<Short> portasCBB;
@@ -62,7 +64,7 @@ public class ModeloController extends AbstractUIUtils implements Initializable {
                                         modeloCBB.setItems(preencheVeiculoCBB(newValue));
                                     }
                         });
-
+      
     }
 
     @Override
@@ -71,7 +73,7 @@ public class ModeloController extends AbstractUIUtils implements Initializable {
     }
 
     @Override
-    protected void adicionar() {
+    public void adicionar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -87,6 +89,16 @@ public class ModeloController extends AbstractUIUtils implements Initializable {
         list.addAll(vDao.getListFromMarca(m));
 
         return list;
+    }
+
+    @Override
+    public void excluir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alterar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

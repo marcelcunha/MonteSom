@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller;
+package com.controller.entidades;
 
-import com.controller.utils.AbstractUIUtils;
+import com.controller.utils.AbstractControllerUtils;
 import com.model.DAO.UsuarioDao;
 import com.model.entidades.Usuario;
 import java.net.URL;
@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
  *
  * @author Marcel
  */
-public class UsuarioController extends AbstractUIUtils implements Initializable {
+public class UsuarioController extends AbstractControllerUtils implements Initializable {
 
     @FXML
     TextField nomeTF;
@@ -47,17 +47,17 @@ public class UsuarioController extends AbstractUIUtils implements Initializable 
      */
     @FXML
     protected void limparCampos() {
-        nomeTF.setText(null);
-        emailTF.setText(null);
-        passPF.setText(null);
-        telTF.setText(null);
-        userTF.setText(null);
+        nomeTF.clear(); 
+        emailTF.clear();
+        passPF.clear();
+        telTF.clear();
+        userTF.clear();
         adminCB.setSelected(false);
     }
 
     @FXML
     @Override
-    protected void adicionar() {
+    public void adicionar() {
         if (verificaCampos()) {
             if (adminCB.selectedProperty().get()) {
 
@@ -99,5 +99,15 @@ public class UsuarioController extends AbstractUIUtils implements Initializable 
         }
 
         return true;
+    }
+
+    @Override
+    public void excluir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alterar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

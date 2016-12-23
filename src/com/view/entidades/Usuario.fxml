@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.UsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.UsuarioController">
    <children>
       <GridPane layoutX="14.0" layoutY="24.0" prefHeight="120.0" prefWidth="564.0">
         <columnConstraints>
@@ -40,7 +40,7 @@
             <Label text="Email: " GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button layoutX="152.0" layoutY="230.0" mnemonicParsing="false" onAction="#adicionar" text="Adicionar" />
+      <Button fx:id="acao" layoutX="152.0" layoutY="230.0" mnemonicParsing="false" />
       <Button layoutX="320.0" layoutY="230.0" mnemonicParsing="false" onAction="#limparCampos" text="Limpar" />
    </children>
 </AnchorPane>

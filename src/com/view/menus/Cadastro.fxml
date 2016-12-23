@@ -14,7 +14,7 @@
             <Button fx:id="montadora" layoutX="331.0" layoutY="238.0" mnemonicParsing="false" onAction="#montadoraButtonAction" text="Montadora" />
             <Button fx:id="prateleiraTBN" layoutX="513.0" layoutY="86.0" mnemonicParsing="false" onAction="#prateleiraButtonAction" text="Prateleira" />
             <Button layoutX="461.0" layoutY="197.0" mnemonicParsing="false" text="d" />
-            <Button layoutX="522.0" layoutY="330.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="522.0" layoutY="330.0" mnemonicParsing="false" onAction="#usuarioButtonAction" text="Usuário" />
             <Button fx:id="categoriaBTN" layoutX="172.0" layoutY="384.0" mnemonicParsing="false" onAction="#categoriaButtonAction" text="Categoria" />
          </children></AnchorPane>
     </children>

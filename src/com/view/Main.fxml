@@ -20,21 +20,22 @@
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane fx:id="anchorpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
                         <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="150.0">
                            <children>
-                              <Button fx:id="pesquisarBTN" minHeight="80.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" prefWidth="100.0" stylesheets="@../../view/style/menuPrincipal.css" text="Pesquisar" />
-                              <Button fx:id="cadastroBTN" minHeight="80.0" mnemonicParsing="false" onAction="#cadastroButtonAction" prefWidth="100.0" stylesheets="@../../view/style/menuPrincipal.css" text="Cadastro" />
-                              <Button fx:id="ManutencaoBTN" minHeight="80.0" mnemonicParsing="false" onAction="#manutencaoButtonAction" prefWidth="100.0" stylesheets="@../../view/style/menuPrincipal.css" text="Manutenção" />
-                              <Button fx:id="sobreBTN" minHeight="80.0" mnemonicParsing="false" onAction="#sobreButtonAction" prefWidth="100.0" stylesheets="@../../view/style/menuPrincipal.css" text="Sobre" />
-                              <Button fx:id="cadastroBTN11" minHeight="80.0" mnemonicParsing="false" onAction="#cadastroButtonAction" prefWidth="100.0" stylesheets="@../../view/style/menuPrincipal.css" text="Cadastro" />
+                              <Button fx:id="pesquisarBTN" minHeight="70.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Pesquisar" />
+                              <Button fx:id="cadastroBTN11" minHeight="70.0" mnemonicParsing="false" onAction="#cadastroButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Estoque" />
+                              <Button fx:id="cadastroBTN" minHeight="70.0" mnemonicParsing="false" onAction="#cadastroButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Cadastro" />
+                              <Button fx:id="ManutencaoBTN" minHeight="70.0" mnemonicParsing="false" onAction="#manutencaoButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Manutenção" />
+                              <Button fx:id="sobreBTN" minHeight="70.0" mnemonicParsing="false" onAction="#sobreButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Sobre" />
                            </children>
                         </VBox>
                      </content>
                   </ScrollPane>
+                  <AnchorPane fx:id="anchorpane" layoutX="150.0" prefHeight="500.0" prefWidth="650.0" />
                </children></AnchorPane>
          </center>
       </BorderPane>

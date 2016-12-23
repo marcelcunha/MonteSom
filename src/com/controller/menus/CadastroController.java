@@ -59,9 +59,12 @@ public class CadastroController implements Initializable {
 
     @FXML
     void veiculoButtonAction(ActionEvent event) {
-
+           loadAnchorPane("Veículo");
     }
-
+    @FXML
+    void usuarioButtonAction(ActionEvent event) {
+        loadAnchorPane("Usuário");
+    }
     @FXML
     void carroButtonAction(ActionEvent event) {
 
@@ -94,15 +97,15 @@ public class CadastroController implements Initializable {
 
     @FXML
     void produtoButtonAction(ActionEvent event) {
-		 loadAnchorPane("Produto");
+        loadAnchorPane("Produto");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
-    void loadAnchorPane(String nome) {
+    private void loadAnchorPane(String nome) {
         Stage stage = new Stage();
         Scene scene;
         try {
@@ -116,8 +119,9 @@ public class CadastroController implements Initializable {
             scene = new Scene(loader.getRoot());
             stage.setScene(scene);
             stage.centerOnScreen();
-            stage.setTitle("Cadastro de "+nome);
+            stage.setTitle("Cadastro de " + nome);
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException ex) {

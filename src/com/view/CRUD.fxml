@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@style/crud.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="150.0" prefWidth="800.0">
          <children>
-            <AnchorPane layoutX="25.0" layoutY="25.0" prefHeight="100.0" prefWidth="750.0" style="-fx-border-width: 5; -fx-border-color: gray;">
+            <AnchorPane layoutX="25.0" layoutY="25.0" prefHeight="100.0" prefWidth="750.0" style="-fx-border-width: 5; -fx-border-color: gray;" stylesheets="@style/crud.css">
                <children>
                   <Label fx:id="tituloLBL" alignment="CENTER" />
                </children>
@@ -24,6 +24,6 @@
             <Button fx:id="fecharBTN" mnemonicParsing="false" onAction="#fecharButtonAction" prefHeight="40.0" prefWidth="80.0" text="Fechar" />
          </children>
       </VBox>
-      <AnchorPane fx:id="anchorpane" layoutX="25.0" layoutY="146.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="425.0" prefWidth="625.0" style="-fx-border-color: gray; -fx-border-width: 5;" />
+      <AnchorPane fx:id="anchorpane" layoutX="25.0" layoutY="146.0" prefHeight="425.0" prefWidth="625.0" style="-fx-border-color: gray; -fx-border-width: 5;" />
    </children>
 </AnchorPane>

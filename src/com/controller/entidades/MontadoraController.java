@@ -80,7 +80,7 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     @FXML
     @Override
     protected void limparCampos() {
-        nomeTF.setText(null);
+        nomeTF.clear();
     }
 
     @Override

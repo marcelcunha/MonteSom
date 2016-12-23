@@ -20,18 +20,8 @@ import javafx.scene.control.TextField;
  */
 public class SearchDialogController<T>implements Initializable {
     
-    
-    @FXML
-    private Label tituloLBL;
-
     @FXML
     private TextField pesquisaTF;
-
-    @FXML
-    private Button cancelarBTN;
-
-    @FXML
-    private Button pesquisaBTN;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

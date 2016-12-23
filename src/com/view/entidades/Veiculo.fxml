@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.VeiculoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.VeiculoController">
    <children>
       <GridPane layoutX="14.0" layoutY="83.0" prefHeight="159.0" prefWidth="579.0">
         <columnConstraints>
@@ -28,7 +28,7 @@
             <Label prefHeight="17.0" prefWidth="64.0" text="Marca:" GridPane.columnIndex="2" />
          </children>
       </GridPane>
-      <Button layoutX="171.0" layoutY="281.0" mnemonicParsing="false" onAction="#adicionar" text="Adicionar" />
+      <Button fx:id="acao" layoutX="171.0" layoutY="281.0" mnemonicParsing="false" />
       <Button layoutX="341.0" layoutY="281.0" mnemonicParsing="false" onAction="#limparCampos" text="Limpar" />
    </children>
 </AnchorPane>

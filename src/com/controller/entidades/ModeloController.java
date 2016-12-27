@@ -6,8 +6,9 @@
 package com.controller.entidades;
 
 import com.controller.utils.AbstractControllerUtils;
-import com.model.DAO.MontadoraDao;
 import com.model.DAO.VeiculoDao;
+import com.model.entidades.IEntidades;
+import com.model.entidades.Modelo;
 import com.model.entidades.Montadora;
 import com.model.entidades.Veiculo;
 import java.net.URL;
@@ -16,15 +17,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -99,6 +95,13 @@ public class ModeloController extends AbstractControllerUtils implements Initial
     @Override
     public void alterar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void preencheFormulario(IEntidades entidade) {
+        Modelo m = (Modelo) entidade;
+       // marcaCBB.getSelectionModel().select(m.);
+       // m.
     }
 
 }

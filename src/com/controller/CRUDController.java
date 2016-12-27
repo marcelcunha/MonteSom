@@ -6,6 +6,7 @@
 package com.controller;
 
 import com.controller.utils.AbstractControllerUtils;
+import com.model.entidades.IEntidades;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedHashMap;
@@ -13,17 +14,22 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -73,9 +79,10 @@ public class CRUDController<T extends AbstractControllerUtils> implements Initia
 
     @FXML
     void atualizarButtonAction(ActionEvent event) {
-
+        controller.buscarEntidade()
         loadAnchorPane(Action.ALTERAR, "Salvar Alteração");
-        controller.dialogPesquisa();
+        controller.preencheFormulario(null);
+        
     }
 
     @FXML
@@ -131,4 +138,6 @@ public class CRUDController<T extends AbstractControllerUtils> implements Initia
             }
         };
     }
+    
+   
 }

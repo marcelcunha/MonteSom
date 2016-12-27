@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Montadora.findAll", query = "SELECT m FROM Montadora m"),
     @NamedQuery(name = "Montadora.findByCodMarca", query = "SELECT m FROM Montadora m WHERE m.codMarca = :codMarca"),
     @NamedQuery(name = "Montadora.findByNomeMarca", query = "SELECT m FROM Montadora m WHERE m.nomeMarca = :nomeMarca")})
-public class Montadora implements Serializable {
+public class Montadora implements Serializable, IEntidades {
     @OneToMany(mappedBy = "codMarca")
     private List<Veiculo> veiculoList;
     private static final long serialVersionUID = 1L;

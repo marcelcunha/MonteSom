@@ -7,14 +7,17 @@ package com.controller.entidades;
 
 import com.controller.utils.AbstractControllerUtils;
 import com.model.DAO.MontadoraDao;
+import com.model.entidades.IEntidades;
 import com.model.entidades.Montadora;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -22,10 +25,12 @@ import javafx.scene.control.TextField;
  * @author Marcel
  */
 public class MontadoraController extends AbstractControllerUtils implements Initializable {
-    
-    @FXML 
+
+    Montadora montadora = null;
+    MontadoraDao dao = new MontadoraDao();
+    @FXML
     private Button actionBTN;
-    
+
     @FXML
     private Label codL;
 
@@ -40,8 +45,8 @@ public class MontadoraController extends AbstractControllerUtils implements Init
         String nome = nomeTF.getText();
 
         if (verificaCampos()) {
-            MontadoraDao dao = new MontadoraDao();
-            Montadora montadora = new Montadora(nome);
+
+            montadora = new Montadora(nome);
             dao.salvar(montadora);
             limparCampos();
             super.alertInfoAdiciona("A Montadora", nome);
@@ -50,31 +55,18 @@ public class MontadoraController extends AbstractControllerUtils implements Init
 
     @Override
     public void excluir() {
-        String nome = nomeTF.getText();
-
-        /*if (verificaCampos()) {
-            MontadoraDao dao = new MontadoraDao();
-            Montadora montadora = new Montadora(nome);
-            dao.salvar(montadora);
-            limparCampos();
-            super.alertInfoAdiciona("A Montadora", nome);
-        }*/
-        
-        System.out.println("excluir");
+        if (super.alertConfirmExclui()) {
+            //TODO chama dao e exclui item 
+        }
     }
 
     @Override
     public void alterar() {
-        String nome = nomeTF.getText();
-
-        /*if (verificaCampos()) {
-            MontadoraDao dao = new MontadoraDao();
-            Montadora montadora = new Montadora(nome);
-            dao.salvar(montadora);
-            limparCampos();
-            super.alertInfoAdiciona("A Montadora", nome);
-        }*/
-        System.out.println("atualizar");
+        if (verificaCampos()) {
+            if (super.alertConfirmAltera()) {
+                //TODO chama dao e altera item
+            }
+        }
     }
 
     @FXML
@@ -87,6 +79,7 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     protected boolean verificaCampos() {
         if (nomeTF.getText().isEmpty()) {
             super.alertInfoVerifica("\"Nome da Montadora\"");
+            return false;
         }
         return true;
     }
@@ -94,6 +87,27 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+    }
+
+    @Override
+    public void preencheFormulario(IEntidades entidade) {
+        Montadora m = (Montadora) entidade;
+        codTF.setText(m.getCodMarca().toString());
+        nomeTF.setText(m.getNomeMarca());     
+    }
+
+    @Override
+    protected Callback<ButtonType, IEntidades> buscaBanco(String str) {
+        return new Callback<ButtonType, IEntidades>() {
+
+            @Override
+            public IEntidades call(ButtonType param) {
+                if(param.equals(ButtonType.NEXT)){
+                    return dao.encontrar(str);
+                }
+                return null;
+            }
+        };
     }
 
 }

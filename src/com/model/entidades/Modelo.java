@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Modelo.findByModeloModelo", query = "SELECT m FROM Modelo m WHERE m.modeloModelo = :modeloModelo"),
     @NamedQuery(name = "Modelo.findByDescricacaoModelo", query = "SELECT m FROM Modelo m WHERE m.descricacaoModelo = :descricacaoModelo"),
     @NamedQuery(name = "Modelo.findByPortasModelo", query = "SELECT m FROM Modelo m WHERE m.portasModelo = :portasModelo")})
-public class Modelo implements Serializable {
+public class Modelo implements Serializable, IEntidades {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

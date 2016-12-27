@@ -7,6 +7,7 @@ package com.controller.entidades;
 
 import com.controller.utils.AbstractControllerUtils;
 import com.model.DAO.UsuarioDao;
+import com.model.entidades.IEntidades;
 import com.model.entidades.Usuario;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -109,5 +110,15 @@ public class UsuarioController extends AbstractControllerUtils implements Initia
     @Override
     public void alterar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void preencheFormulario(IEntidades entidade) {
+        Usuario u = (Usuario) entidade;
+        
+        userTF.setText(u.getUserUsr());
+        nomeTF.setText(u.getNomeUsr());
+        emailTF.setText(u.getEmail());
+        
     }
 }

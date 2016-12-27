@@ -6,23 +6,18 @@
 package com.controller.entidades;
 
 import com.controller.utils.AbstractControllerUtils;
-import com.model.DAO.MontadoraDao;
 import com.model.DAO.VeiculoDao;
+import com.model.entidades.IEntidades;
 import com.model.entidades.Montadora;
 import com.model.entidades.Veiculo;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -85,7 +80,7 @@ public class VeiculoController extends AbstractControllerUtils implements Initia
     @Override
     @FXML
     protected void limparCampos() {
-        nomeTF.setText(null);
+        nomeTF.clear();
         marcaCBB.getSelectionModel().clearSelection();
      
     }
@@ -97,6 +92,11 @@ public class VeiculoController extends AbstractControllerUtils implements Initia
 
     @Override
     public void alterar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void preencheFormulario(IEntidades entidade) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

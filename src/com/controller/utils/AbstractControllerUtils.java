@@ -5,7 +5,7 @@
  */
 package com.controller.utils;
 
-import com.controller.dialogs.SearchDialog;
+import com.controller.dialogs.AbstractDialogsUtils;
 import com.model.DAO.MontadoraDao;
 import com.model.entidades.IEntidades;
 import com.model.entidades.Montadora;
@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
@@ -27,7 +28,7 @@ import javafx.util.Callback;
  *
  * @author Marcel
  */
-public abstract class AbstractControllerUtils {
+public abstract class AbstractControllerUtils extends AbstractDialogsUtils {
 
     @FXML
     protected Button acao;
@@ -70,75 +71,10 @@ public abstract class AbstractControllerUtils {
      * Limpa todos os campos do formulário
      */
     protected abstract void limparCampos();
+
+    public abstract IEntidades encontraEntidade(String str);
+
     
-    protected abstract Callback<ButtonType, IEntidades> buscaBanco(String param);
-    /**
-     * Mostra o Dialog de informação na tela
-     *
-     * @param mensagem
-     */
-    private void alertInfo(String mensagem) {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-
-        a.setHeaderText(null);
-        a.setContentText(mensagem);
-        a.showAndWait();
-    }
-
-    /**
-     * Abre o Dialog na tela com a mensagem de confirmação com dois botões de
-     * opção (Sim e Não)
-     *
-     * @param mensagem Mensagem que será mostrada no Dialog
-     * @return true se o usuário clicou no botão Sim, false, caso contrário
-     */
-    private boolean alertConfirm(String mensagem) {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-
-        a.setHeaderText(null);
-        a.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-        a.setContentText(mensagem);
-
-        return a.showAndWait().get() == ButtonType.YES;
-    }
-
-    /**
-     * Dialog para informar que um campo do formulário não pode estar vazio
-     *
-     * @param str Nome do campo que não pode ser vazio
-     */
-    protected void alertInfoVerifica(String str) {
-        alertInfo("O campo " + str + " não pode ser vazio ");
-    }
-
-    /**
-     * Dialog para informar que um item foi inserido com sucesso
-     *
-     * @param tipo Nome da entidade que está sendo inserida. Ex.: Veículo
-     * @param nome Nome do item que está sendo inserido. Ex.: Corsa
-     */
-    protected void alertInfoAdiciona(String tipo, String nome) {
-        alertInfo(tipo + " " + nome + " foi cadastrado(a) com sucesso!");
-    }
-
-    /**
-     * Dialog de confirmação se o usuário deseja excluir o registro
-     *
-     * @return true se sim, false, se não
-     */
-    protected boolean alertConfirmExclui() {
-        return alertConfirm("Deseja excluir o ítem?");
-    }
-
-    /**
-     * Dialog de confirmação se o usuário deseja fazer a alteração no formulário
-     *
-     * @return true se sim, false, se não
-     */
-    protected boolean alertConfirmAltera() {
-        return alertConfirm("Deseja salvar as alterações feitas?");
-    }
-
     /**
      * Preenche a lista com as Montadoras presentres banco de dados para popular
      * o combobox
@@ -153,17 +89,13 @@ public abstract class AbstractControllerUtils {
 
         return list;
     }
-    public IEntidades buscarEntidade(Callback<ButtonType, IEntidades> callback) {
-        SearchDialog dialog = new SearchDialog();
-        dialog.getDialog(callback);
-    }
-    
-    }
-     /*public IEntidades buscarEntidade(Callback<ButtonType, IEntidades> callback) {
+
+    public IEntidades buscarEntidade() {
         Dialog<IEntidades> d = new Dialog();
         DialogPane dp = new DialogPane();
 
-        ButtonType BUSCAR = new ButtonType("Buscar");
+        ButtonType BUSCAR = new ButtonType("Buscar", ButtonBar.ButtonData.APPLY);
+       
         Label label = new Label("Digite o código ou nome:");
         TextField tf = new TextField();
         GridPane gp = new GridPane();
@@ -172,21 +104,24 @@ public abstract class AbstractControllerUtils {
         gp.add(label, 0, 0);
         gp.add(tf, 1, 0);
         dp.setContent(gp);
-        dp.getButtonTypes().addAll(ButtonType.CANCEL, BUSCAR);
+        dp.getButtonTypes().addAll(BUSCAR, ButtonType.CANCEL );
 
         d.setDialogPane(dp);
         d.setContentText("Counteudo");
         d.setTitle("titulo");
         d.setHeaderText("cabecalho");
         
+        Button buscar = (Button) dp.lookupButton(BUSCAR);
+        tf.requestFocus();
+        
         d.setResultConverter(new Callback<ButtonType, IEntidades>() {
 
             @Override
             public IEntidades call(ButtonType param) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                return encontraEntidade(tf.getText());
             }
         });
         d.showAndWait();
         return d.getResult();
-    }*/
+    }
 }

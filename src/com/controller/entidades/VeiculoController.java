@@ -100,5 +100,10 @@ public class VeiculoController extends AbstractControllerUtils implements Initia
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Montadora encontraEntidade(String str) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

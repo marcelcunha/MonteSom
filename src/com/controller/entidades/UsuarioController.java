@@ -8,6 +8,7 @@ package com.controller.entidades;
 import com.controller.utils.AbstractControllerUtils;
 import com.model.DAO.UsuarioDao;
 import com.model.entidades.IEntidades;
+import com.model.entidades.Montadora;
 import com.model.entidades.Usuario;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -120,5 +121,10 @@ public class UsuarioController extends AbstractControllerUtils implements Initia
         nomeTF.setText(u.getNomeUsr());
         emailTF.setText(u.getEmail());
         
+    }
+
+    @Override
+    public Montadora encontraEntidade(String str) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

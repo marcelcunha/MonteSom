@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.MontadoraController">
+<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.MontadoraController">
    <children>
       <GridPane layoutX="167.0" layoutY="98.0" prefHeight="90.0" prefWidth="284.0">
         <columnConstraints>
@@ -23,7 +23,7 @@
             <Label fx:id="codL" text="Código:" />
             <Label prefHeight="17.0" prefWidth="113.0" text="Nome da Marca" GridPane.rowIndex="1" />
             <TextField fx:id="nomeTF" prefHeight="23.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="codTF" prefHeight="25.0" prefWidth="169.0" GridPane.columnIndex="1" />
+            <TextField fx:id="codTF" editable="false" prefHeight="25.0" prefWidth="169.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <Button fx:id="acao" layoutX="199.0" layoutY="257.0" mnemonicParsing="false" />

@@ -14,10 +14,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -95,19 +93,9 @@ public class MontadoraController extends AbstractControllerUtils implements Init
         codTF.setText(m.getCodMarca().toString());
         nomeTF.setText(m.getNomeMarca());     
     }
-
+    
     @Override
-    protected Callback<ButtonType, IEntidades> buscaBanco(String str) {
-        return new Callback<ButtonType, IEntidades>() {
-
-            @Override
-            public IEntidades call(ButtonType param) {
-                if(param.equals(ButtonType.NEXT)){
-                    return dao.encontrar(str);
-                }
-                return null;
-            }
-        };
+    public IEntidades encontraEntidade(String str){
+        return dao.encontrar(str);
     }
-
 }

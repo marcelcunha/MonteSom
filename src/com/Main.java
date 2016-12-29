@@ -5,7 +5,10 @@
  */
 package com;
 
+import java.io.IOException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -24,30 +27,34 @@ import javafx.stage.WindowEvent;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/Main.fxml"));
-
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.setTitle("Controle de estoque");
-        
-        /*mostra um alert de confirmação quando usuário clica no botão sair*/
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-
-            @Override
-            public void handle(WindowEvent event) {
-               Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-               a.setContentText("Deseja encerrar o programa?");
-   
-               a.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-               //se não clicar no botão sim(YES) o envento é consumido e não terá ação
-               if(!(a.showAndWait().get()==ButtonType.YES))
-                  event.consume();
-            }
-        });
-        
-        stage.show();
+    public void start(Stage stage){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("view/Main.fxml"));
+            
+            Scene scene = new Scene(root);
+            
+            stage.setScene(scene);
+            stage.setTitle("Controle de estoque");
+            
+            /*mostra um alert de confirmação quando usuário clica no botão sair*/
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                
+                @Override
+                public void handle(WindowEvent event) {
+                    Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                    a.setContentText("Deseja encerrar o programa?");
+                    
+                    a.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+                    //se não clicar no botão sim(YES) o envento é consumido e não terá ação
+                    if(!(a.showAndWait().get()==ButtonType.YES))
+                        event.consume();
+                }
+            });
+            
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

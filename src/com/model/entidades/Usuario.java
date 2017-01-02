@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -22,7 +21,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Marcel
  */
 @Entity
-@Table(name = "usuario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
@@ -33,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findBySuperUsr", query = "SELECT u FROM Usuario u WHERE u.superUsr = :superUsr"),
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
     @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone")})
-public class Usuario implements Serializable, IEntidades {
+public class Usuario implements Serializable, IEntidades{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,9 +50,7 @@ public class Usuario implements Serializable, IEntidades {
     @Basic(optional = false)
     @Column(name = "super_usr")
     private boolean superUsr;
-    @Column(name = "email")
     private String email;
-    @Column(name = "telefone")
     private Long telefone;
 
     public Usuario() {
@@ -62,6 +58,14 @@ public class Usuario implements Serializable, IEntidades {
 
     public Usuario(Integer codUsr) {
         this.codUsr = codUsr;
+    }
+
+    public Usuario(Integer codUsr, String userUsr, String senhaUsr, String nomeUsr, boolean superUsr) {
+        this.codUsr = codUsr;
+        this.userUsr = userUsr;
+        this.senhaUsr = senhaUsr;
+        this.nomeUsr = nomeUsr;
+        this.superUsr = superUsr;
     }
 
     public Usuario(String userUsr, String senhaUsr, String nomeUsr, boolean superUsr, String email, Long telefone) {
@@ -151,7 +155,7 @@ public class Usuario implements Serializable, IEntidades {
 
     @Override
     public String toString() {
-        return "com.model.endidades.Usuario[ codUsr=" + codUsr + " ]";
+        return "com.model.entidades.Usuario[ codUsr=" + codUsr + " ]";
     }
     
 }

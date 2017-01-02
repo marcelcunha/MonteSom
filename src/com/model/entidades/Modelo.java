@@ -6,8 +6,8 @@
 package com.model.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,98 +16,83 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Marcel
  */
 @Entity
-@Table(name = "modelo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m"),
-    @NamedQuery(name = "Modelo.findByCodModelo", query = "SELECT m FROM Modelo m WHERE m.codModelo = :codModelo"),
-    @NamedQuery(name = "Modelo.findByModeloModelo", query = "SELECT m FROM Modelo m WHERE m.modeloModelo = :modeloModelo"),
-    @NamedQuery(name = "Modelo.findByDescricacaoModelo", query = "SELECT m FROM Modelo m WHERE m.descricacaoModelo = :descricacaoModelo"),
-    @NamedQuery(name = "Modelo.findByPortasModelo", query = "SELECT m FROM Modelo m WHERE m.portasModelo = :portasModelo")})
-public class Modelo implements Serializable, IEntidades {
+    @NamedQuery(name = "Modelo.findByCod", query = "SELECT m FROM Modelo m WHERE m.cod = :cod"),
+    @NamedQuery(name = "Modelo.findByNome", query = "SELECT m FROM Modelo m WHERE m.nome = :nome")})
+public class Modelo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "cod_modelo")
-    private Integer codModelo;
+    private Integer cod;
     @Basic(optional = false)
-    @Column(name = "modelo_modelo")
-    private String modeloModelo;
-    @Column(name = "descricacao_modelo")
-    private String descricacaoModelo;
-    @Basic(optional = false)
-    @Column(name = "portas_modelo")
-    private short portasModelo;
-    @JoinColumn(name = "cod_veiculo", referencedColumnName = "cod")
-    @ManyToOne(optional = false)
-    private Veiculo codVeiculo;
+    private String nome;
+    @OneToMany(mappedBy = "codMod")
+    private List<Veiculo> veiculoList;
+    @JoinColumn(name = "cod_marca", referencedColumnName = "cod_marca")
+    @ManyToOne
+    private Montadora codMarca;
 
     public Modelo() {
     }
 
-    public Modelo(Integer codModelo) {
-        this.codModelo = codModelo;
+    public Modelo(Integer cod) {
+        this.cod = cod;
     }
 
-    public Modelo(Integer codModelo, String modeloModelo, short portasModelo) {
-        this.codModelo = codModelo;
-        this.modeloModelo = modeloModelo;
-        this.portasModelo = portasModelo;
+    public Modelo(Integer cod, String nome) {
+        this.cod = cod;
+        this.nome = nome;
     }
 
-    public Integer getCodModelo() {
-        return codModelo;
+    public Integer getCod() {
+        return cod;
     }
 
-    public void setCodModelo(Integer codModelo) {
-        this.codModelo = codModelo;
+    public void setCod(Integer cod) {
+        this.cod = cod;
     }
 
-    public String getModeloModelo() {
-        return modeloModelo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setModeloModelo(String modeloModelo) {
-        this.modeloModelo = modeloModelo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDescricacaoModelo() {
-        return descricacaoModelo;
+    @XmlTransient
+    public List<Veiculo> getVeiculoList() {
+        return veiculoList;
     }
 
-    public void setDescricacaoModelo(String descricacaoModelo) {
-        this.descricacaoModelo = descricacaoModelo;
+    public void setVeiculoList(List<Veiculo> veiculoList) {
+        this.veiculoList = veiculoList;
     }
 
-    public short getPortasModelo() {
-        return portasModelo;
+    public Montadora getCodMarca() {
+        return codMarca;
     }
 
-    public void setPortasModelo(short portasModelo) {
-        this.portasModelo = portasModelo;
-    }
-
-    public Veiculo getCodVeiculo() {
-        return codVeiculo;
-    }
-
-    public void setCodVeiculo(Veiculo codVeiculo) {
-        this.codVeiculo = codVeiculo;
+    public void setCodMarca(Montadora codMarca) {
+        this.codMarca = codMarca;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codModelo != null ? codModelo.hashCode() : 0);
+        hash += (cod != null ? cod.hashCode() : 0);
         return hash;
     }
 
@@ -118,7 +103,7 @@ public class Modelo implements Serializable, IEntidades {
             return false;
         }
         Modelo other = (Modelo) object;
-        if ((this.codModelo == null && other.codModelo != null) || (this.codModelo != null && !this.codModelo.equals(other.codModelo))) {
+        if ((this.cod == null && other.cod != null) || (this.cod != null && !this.cod.equals(other.cod))) {
             return false;
         }
         return true;
@@ -126,7 +111,7 @@ public class Modelo implements Serializable, IEntidades {
 
     @Override
     public String toString() {
-        return "com.model.entidades.Modelo[ codModelo=" + codModelo + " ]";
+        return "com.model.entidades.Modelo[ cod=" + cod + " ]";
     }
     
 }

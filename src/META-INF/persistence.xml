@@ -7,6 +7,12 @@
     <class>com.model.entidades.Veiculo</class>
     <class>com.model.entidades.Modelo</class>
     <class>com.model.entidades.GrupoVeiculo</class>
+    <class>com.model.entidades.Fabricante</class>
+    <class>com.model.entidades.Categoria</class>
+    <class>com.model.entidades.Grupo</class>
+    <class>com.model.entidades.Prateleira</class>
+    <class>com.model.entidades.Produto</class>
+    <class>com.model.entidades.Estoque</class>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/MonteSom"/>

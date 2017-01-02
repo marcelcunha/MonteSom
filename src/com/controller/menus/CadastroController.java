@@ -66,23 +66,23 @@ public class CadastroController implements Initializable {
         loadAnchorPane("Usuário");
     }
     @FXML
-    void carroButtonAction(ActionEvent event) {
-
+    void modeloButtonAction(ActionEvent event) {
+         loadAnchorPane("Modelo");
     }
 
     @FXML
     void categoriaButtonAction(ActionEvent event) {
-
+         loadAnchorPane("Categoria");
     }
 
     @FXML
     void grupoButtonAction(ActionEvent event) {
-
+         loadAnchorPane("Grupo");
     }
 
     @FXML
     void fabricanteButtonAction(ActionEvent event) {
-
+         loadAnchorPane("Fabricante");
     }
 
     @FXML
@@ -92,7 +92,7 @@ public class CadastroController implements Initializable {
 
     @FXML
     void prateleiraButtonAction(ActionEvent event) {
-
+         loadAnchorPane("Prateleira");
     }
 
     @FXML
@@ -102,7 +102,7 @@ public class CadastroController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+         
     }
 
     private void loadAnchorPane(String nome) {

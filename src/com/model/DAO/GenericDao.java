@@ -57,8 +57,7 @@ public abstract class GenericDao <T, I extends Serializable>{
        return entity;
    }
 
-   public void remover(I id) {
-       T entity = encontrar(id);
+   public void remover(T entity) {
        EntityTransaction tx = entityManager.getTransaction();
        tx.begin();
        T mergedEntity = entityManager.merge(entity);
@@ -66,12 +65,18 @@ public abstract class GenericDao <T, I extends Serializable>{
        entityManager.flush();
        tx.commit();
    }
-
+   
+   /**
+    * Retorna uma lista com todos elementos da tabela do banco de dados 
+    * @return 
+    */
    public List<T> getList() {
        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
        CriteriaQuery<T> query = builder.createQuery(persistedClass);
        query.from(persistedClass);
-       return entityManager.createQuery(query).getResultList();
+       List<T> list = entityManager.createQuery(query).getResultList();
+       
+       return list;
    }
 
    public T encontrar(I id) {

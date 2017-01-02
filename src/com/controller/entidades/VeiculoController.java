@@ -13,7 +13,6 @@ import com.model.entidades.Veiculo;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -32,14 +31,12 @@ public class VeiculoController extends AbstractControllerUtils implements Initia
     @FXML
     private ComboBox<Montadora> marcaCBB;
 
-   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-
         marcaCBB.setItems(preencheMarcasCBB());
-       /* marcaCBB.setCellFactory(super.marcaCBBFactory());
-        marcaCBB.setButtonCell(cell());*/
+        /* marcaCBB.setCellFactory(super.marcaCBBFactory());
+         marcaCBB.setButtonCell(cell());*/
     }
 
     @Override
@@ -47,7 +44,7 @@ public class VeiculoController extends AbstractControllerUtils implements Initia
         if (nomeTF.getText().isEmpty()) {
             super.alertInfoVerifica("\"Nome\"");
             return false;
-       
+
         } else if (marcaCBB.getSelectionModel().isEmpty()) {
             super.alertInfoVerifica("\"Marca\"");
             return false;
@@ -58,31 +55,15 @@ public class VeiculoController extends AbstractControllerUtils implements Initia
     @Override
     @FXML
     public void adicionar() {
-        Platform.runLater(new Runnable() {
 
-            @Override
-            public void run() {
-                if (verificaCampos()) {
-                    VeiculoDao dao = new VeiculoDao();
-                    Veiculo v = new Veiculo(
-                            nomeTF.getText(),                          
-                            marcaCBB.getSelectionModel().getSelectedItem());
-                    dao.salvar(v);
+        if (verificaCampos()) {
+            VeiculoDao dao = new VeiculoDao();
+            Veiculo v = new Veiculo();
+            dao.salvar(v);
 
-                    alertInfoAdiciona("Veículo", nomeTF.getText());
-                    limparCampos();
-                }
-            }
-        });
-
-    }
-
-    @Override
-    @FXML
-    protected void limparCampos() {
-        nomeTF.clear();
-        marcaCBB.getSelectionModel().clearSelection();
-     
+            alertInfoAdiciona("Veículo", nomeTF.getText());
+            limparCampos();
+        }
     }
 
     @Override
@@ -101,9 +82,16 @@ public class VeiculoController extends AbstractControllerUtils implements Initia
     }
 
     @Override
-    public Montadora encontraEntidade(String str) {
+    @FXML
+    protected void limparCampos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+    @Override
+    public IEntidades encontraEntidade(String str) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
 }

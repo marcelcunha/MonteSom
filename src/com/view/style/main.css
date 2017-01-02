@@ -1,0 +1,80 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 08/12/2016, 19:09:48
+    Author     : Marcel
+*/
+
+.button{
+    -fx-border-width: 0.5px;
+    -fx-border-color: #ACACAC;
+    //-fx-border-radius: 50px;
+    // -fx-background-radius: 50px;
+    -fx-background-color: darkgray;
+    -fx-font-size: 12px; 
+    -fx-font-weight:700;
+    -fx-font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    -fx-background: -fx-accent;
+}
+.button:hover{
+    -fx-background-color: #EA5444;
+    -fx-text-fill: white;
+
+}
+.button:focused{
+    -fx-border-width: 0.5px;
+    -fx-border-color: #ACACAC;
+    // -fx-border-radius: 50px;
+    /*    -fx-background-radius: 50px;
+        -fx-background-color: white;
+        -fx-font-size: 12px; 
+        -fx-padding: 8px 25px;
+        -fx-font-weight:700;
+        -fx-font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;*/
+}
+.button:pressed{
+    -fx-background-color: #EA5444;
+    -fx-text-fill: white;
+}
+.button:selected{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+#lateral{
+    -fx-spacing: 10; 
+    -fx-border-width: 10;
+}
+
+.label{
+    -fx-font-size: 30pt;
+
+}
+
+
+
+#sobre{
+    /*-fx-background-image: url('../icons/about.png');
+    -fx-background-size: 64px;
+    -fx-background-position: 5%;
+    -fx-background-repeat: no-repeat;
+    -fx-text-alignment: right;*/
+    -fx-image: url('../icons/about.png');
+   
+}
+*{
+    -fx-background-color: #282E34;
+}
+
+#apane{
+    -fx-background-color: white;
+}
+
+#titulo{
+     -fx-font-size: 14pt;
+    -fx-text-fill:  white;
+}
+

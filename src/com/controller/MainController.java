@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 
 /**
  * FXML Controller class
@@ -72,9 +73,17 @@ public class MainController implements Initializable {
             URL url = getClass().getResource("/com/view/menus/"+nome+".fxml");
 
             loader.load(url.openStream());
-            anchorpane.getChildren().clear();
-            anchorpane.getChildren().add(loader.getRoot());
-
+            
+            Region root = (Region) loader.getRoot();
+            
+            anchorpane.getChildren().clear(); 
+             root.autosize();
+             root.prefHeightProperty().bind(anchorpane.heightProperty());
+             root.prefWidthProperty().bind(anchorpane.widthProperty());
+            anchorpane.getChildren().add(root);
+           
+            /*anchorpane.prefHeightProperty().bindBidirectional(root.prefHeightProperty());
+            anchorpane.prefWidthProperty().bindBidirectional(root.prefWidthProperty());*/
         } catch (IOException ex) {
             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,18 +8,17 @@ package com.model.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -28,70 +27,92 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Marcel
  */
 @Entity
-@Table(name = "veiculo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Veiculo.findAll", query = "SELECT v FROM Veiculo v"),
-    @NamedQuery(name = "Veiculo.findByCod", query = "SELECT v FROM Veiculo v WHERE v.cod = :cod"),
-    @NamedQuery(name = "Veiculo.findByNome", query = "SELECT v FROM Veiculo v WHERE v.nome = :nome")})
-public class Veiculo implements Serializable, IEntidades {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "veiculo")
-    private List<GrupoVeiculo> grupoVeiculoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codVeiculo")
-    private List<Modelo> modeloList;
+    @NamedQuery(name = "Veiculo.findByCodVei", query = "SELECT v FROM Veiculo v WHERE v.codVei = :codVei"),
+    @NamedQuery(name = "Veiculo.findByDescVei", query = "SELECT v FROM Veiculo v WHERE v.descVei = :descVei"),
+    @NamedQuery(name = "Veiculo.findByQtdPortas", query = "SELECT v FROM Veiculo v WHERE v.qtdPortas = :qtdPortas")})
+public class Veiculo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "cod")
-    private Integer cod;
-    @Basic(optional = false)
-    @Column(name = "nome")
-    private String nome;
-    @JoinColumn(name = "cod_marca", referencedColumnName = "cod_marca")
+    @Column(name = "cod_vei")
+    private Integer codVei;
+    @Column(name = "desc_vei")
+    private String descVei;
+    @Column(name = "qtd_portas")
+    private Integer qtdPortas;
+    @ManyToMany(mappedBy = "veiculoList")
+    private List<Grupo> grupoList;
+    @JoinColumn(name = "cod_mod", referencedColumnName = "cod")
     @ManyToOne
-    private Montadora codMarca;
+    private Modelo codMod;
+    @OneToMany(mappedBy = "codVei")
+    private List<Produto> produtoList;
 
     public Veiculo() {
     }
 
-    public Veiculo(Integer cod) {
-        this.cod = cod;
+    public Veiculo(Integer codVei) {
+        this.codVei = codVei;
     }
 
-    public Veiculo(String nome, Montadora codMarca) {
-        this.nome = nome;
-        this.codMarca = codMarca;
+    public Integer getCodVei() {
+        return codVei;
     }
 
-    public Integer getCod() {
-        return cod;
+    public void setCodVei(Integer codVei) {
+        this.codVei = codVei;
     }
 
-    public void setCod(Integer cod) {
-        this.cod = cod;
+    public String getDescVei() {
+        return descVei;
     }
 
-    public String getNome() {
-        return nome;
+    public void setDescVei(String descVei) {
+        this.descVei = descVei;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Integer getQtdPortas() {
+        return qtdPortas;
     }
 
-    public Montadora getCodMarca() {
-        return codMarca;
+    public void setQtdPortas(Integer qtdPortas) {
+        this.qtdPortas = qtdPortas;
     }
 
-    public void setCodMarca(Montadora codMarca) {
-        this.codMarca = codMarca;
+    @XmlTransient
+    public List<Grupo> getGrupoList() {
+        return grupoList;
+    }
+
+    public void setGrupoList(List<Grupo> grupoList) {
+        this.grupoList = grupoList;
+    }
+
+    public Modelo getCodMod() {
+        return codMod;
+    }
+
+    public void setCodMod(Modelo codMod) {
+        this.codMod = codMod;
+    }
+
+    @XmlTransient
+    public List<Produto> getProdutoList() {
+        return produtoList;
+    }
+
+    public void setProdutoList(List<Produto> produtoList) {
+        this.produtoList = produtoList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cod != null ? cod.hashCode() : 0);
+        hash += (codVei != null ? codVei.hashCode() : 0);
         return hash;
     }
 
@@ -102,7 +123,7 @@ public class Veiculo implements Serializable, IEntidades {
             return false;
         }
         Veiculo other = (Veiculo) object;
-        if ((this.cod == null && other.cod != null) || (this.cod != null && !this.cod.equals(other.cod))) {
+        if ((this.codVei == null && other.codVei != null) || (this.codVei != null && !this.codVei.equals(other.codVei))) {
             return false;
         }
         return true;
@@ -110,25 +131,7 @@ public class Veiculo implements Serializable, IEntidades {
 
     @Override
     public String toString() {
-        return nome;
-    }
-
-    @XmlTransient
-    public List<Modelo> getModeloList() {
-        return modeloList;
-    }
-
-    public void setModeloList(List<Modelo> modeloList) {
-        this.modeloList = modeloList;
-    }
-
-    @XmlTransient
-    public List<GrupoVeiculo> getGrupoVeiculoList() {
-        return grupoVeiculoList;
-    }
-
-    public void setGrupoVeiculoList(List<GrupoVeiculo> grupoVeiculoList) {
-        this.grupoVeiculoList = grupoVeiculoList;
+        return "com.model.entidades.Veiculo[ codVei=" + codVei + " ]";
     }
     
 }

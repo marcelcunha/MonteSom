@@ -48,6 +48,7 @@ public abstract class AbstractControllerUtils extends AbstractDialogsUtils {
     /**
      * Adiciona os dados do formulário no banco de dados
      */
+      @FXML
     public abstract void adicionar();
 
     /**
@@ -72,9 +73,6 @@ public abstract class AbstractControllerUtils extends AbstractDialogsUtils {
      */
     protected abstract void limparCampos();
 
-    public abstract IEntidades encontraEntidade(String str);
-
-    
     /**
      * Preenche a lista com as Montadoras presentres banco de dados para popular
      * o combobox
@@ -90,7 +88,7 @@ public abstract class AbstractControllerUtils extends AbstractDialogsUtils {
         return list;
     }
 
-    public IEntidades buscarEntidade() {
+    /*public IEntidades buscarEntidade() {
         Dialog<IEntidades> d = new Dialog();
         DialogPane dp = new DialogPane();
 
@@ -123,5 +121,5 @@ public abstract class AbstractControllerUtils extends AbstractDialogsUtils {
         });
         d.showAndWait();
         return d.getResult();
-    }
+    }*/
 }

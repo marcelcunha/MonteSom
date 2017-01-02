@@ -33,88 +33,91 @@ import javafx.stage.Stage;
  * @param <T>
  */
 public class CRUDController<T extends AbstractControllerUtils> implements Initializable {
-    
+
     private String entidade;
     private FXMLLoader loader = new FXMLLoader();
     T controller = null;
     Map<String, String> fxmlNames = new LinkedHashMap<>();
-    
-    public CRUDController(String entidade) {        
+
+    public CRUDController(String entidade) {
+        this.entidade = entidade;
+
         fxmlNames.put("Usuário", "Usuario");
         fxmlNames.put("Veículo", "Veiculo");
-        
+
         URL url = getClass().getResource("/com/view/entidades/" + fxmlNames.getOrDefault(entidade, entidade) + ".fxml");
-        
+
         try {
             loader.load(url.openStream());
         } catch (IOException ex) {
             TrataExceptions.mostraDialog(ex.getMessage(), ex);
             ex.printStackTrace();
+
         }
         controller = loader.getController();
     }
-    
+
     @FXML
     private AnchorPane anchorpane;
-    
+
     @FXML
     public Label tituloLBL;
-    
+
     @FXML
     private Button novoBTN;
-    
+
     @FXML
     private Button salvarBTN;
-    
+
     @FXML
     private Button atualizarBTN;
-    
+
     @FXML
     private Button excluirBTN;
-    
+
     @FXML
     Button fecharBTN;
-    
+
     @FXML
     void fecharButtonAction(ActionEvent event) {
         Stage stage = (Stage) fecharBTN.getScene().getWindow();
         stage.close();
     }
-    
+
     @FXML
     void atualizarButtonAction(ActionEvent event) throws IOException {
         buscarEntidade();
-       // loadAnchorPane(Action.ALTERAR, "Salvar Alteração");        
+        // loadAnchorPane(Action.ALTERAR, "Salvar Alteração");        
     }
-    
+
     @FXML
     void excluirButtonAction(ActionEvent event) {
-        controller.preencheFormulario(controller.buscarEntidade());
+        // controller.preencheFormulario(controller.buscarEntidade());
         loadAnchorPane(Action.REMOVER, "Excluir Registro");
     }
-    
+
     @FXML
     void novoButtonAction(ActionEvent event) {
         loadAnchorPane(Action.INSERIR, "Salvar");
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tituloLBL.setText(entidade);
     }
-    
+
     public void loadAnchorPane(Action a, String textoButton) {
-        
+
         controller.getAcaoBTN().setText(textoButton);
         controller.getAcaoBTN().setOnAction(btnAction(a));
-        
+
         trocaAPane(loader.getRoot());
-        
+
     }
-    
+
     public EventHandler<ActionEvent> btnAction(Action metodo) {
         return new EventHandler<ActionEvent>() {
-            
+
             @Override
             public void handle(ActionEvent event) {
                 if (metodo == Action.INSERIR) {
@@ -127,13 +130,8 @@ public class CRUDController<T extends AbstractControllerUtils> implements Initia
             }
         };
     }
-    
-    public void trocaAPane(Parent root) {
-        anchorpane.getChildren().clear();
-        anchorpane.getChildren().add(root);
-    }
-    
-    public void buscarEntidade(){   
+
+    public void buscarEntidade() {
         try {
             FXMLLoader l = new FXMLLoader();
             l.load(getClass().getResource("/com/view/busca/BuscaEntidade.fxml").openStream());
@@ -141,7 +139,11 @@ public class CRUDController<T extends AbstractControllerUtils> implements Initia
         } catch (IOException ex) {
             Logger.getLogger(CRUDController.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-       
     }
+
+    public void trocaAPane(Parent root) {
+        anchorpane.getChildren().clear();
+        anchorpane.getChildren().add(root);
+    }
+
 }

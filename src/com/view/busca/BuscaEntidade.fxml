@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="grid" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.busca.BuscaEntidadeController">
+<GridPane fx:id="grid" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.busca.BuscaEntidadeController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="117.0" />
@@ -34,7 +34,7 @@
    <children>
       <Label fx:id="mensagemLBL" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <TextField fx:id="campoTF" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-      <CheckBox fx:id="tipoCKB" mnemonicParsing="false" text="Buscar pelo código" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <CheckBox fx:id="tipoCKB" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <Group GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" spacing="80.0" GridPane.columnSpan="5" GridPane.rowIndex="9">
          <children>
@@ -42,5 +42,6 @@
             <Button mnemonicParsing="false" onAction="#limparCamposButtonAction" prefWidth="60.0" text="Limpar" />
          </children>
       </HBox>
+      <Label text="Buscar pelo código:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
    </children>
 </GridPane>

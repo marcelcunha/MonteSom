@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@style/menuPrincipal.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" stylesheets="@style/menuPrincipal.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.MainController">
    <children>
       <BorderPane layoutX="14.0" layoutY="25.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <AnchorPane id="top" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text layoutX="60.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monte Som" />
+                  <Text id="titulo" layoutX="41.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monte Som" />
                   <ImageView fitHeight="80.0" fitWidth="100.0" layoutX="41.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
@@ -22,20 +23,50 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <content>
-                        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="150.0">
-                           <children>
-                              <Button fx:id="pesquisarBTN" minHeight="70.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Pesquisar" />
-                              <Button fx:id="cadastroBTN11" minHeight="70.0" mnemonicParsing="false" onAction="#cadastroButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Estoque" />
-                              <Button fx:id="cadastroBTN" minHeight="70.0" mnemonicParsing="false" onAction="#cadastroButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Cadastro" />
-                              <Button fx:id="ManutencaoBTN" minHeight="70.0" mnemonicParsing="false" onAction="#manutencaoButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Manutenção" />
-                              <Button fx:id="sobreBTN" minHeight="70.0" mnemonicParsing="false" onAction="#sobreButtonAction" prefWidth="110.0" stylesheets="@../../view/style/menuPrincipal.css" text="Sobre" />
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
-                  <AnchorPane fx:id="anchorpane" layoutX="150.0" prefHeight="500.0" prefWidth="650.0" />
+                  <VBox id="lateral" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="150.0">
+                     <children>
+                        <Button fx:id="cadastroBTN11" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#cadastroButtonAction" prefHeight="70.0" prefWidth="130.0" stylesheets="@../../view/style/menuPrincipal.css" text="Estoque">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/stock.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="cadastroBTN" contentDisplay="TOP" mnemonicParsing="false" onAction="#cadastroButtonAction" prefHeight="70.0" prefWidth="130.0" stylesheets="@../../view/style/menuPrincipal.css" text="Cadastro">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/add_black.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ManutencaoBTN" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#manutencaoButtonAction" prefHeight="70.0" prefWidth="130.0" stylesheets="@../../view/style/menuPrincipal.css" text="Manutenção">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/settings.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button contentDisplay="TOP" disable="true" mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" text="Sobre">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/about.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets top="10.0" />
+                     </opaqueInsets>
+                  </VBox>
+                  <AnchorPane id="apane" fx:id="anchorpane" layoutX="150.0" prefHeight="500.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
          </center>
       </BorderPane>

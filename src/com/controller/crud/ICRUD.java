@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.model.DAO;
+package com.controller.crud;
 
-import com.model.entidades.Modelo;
+import com.model.entidades.IEntidades;
 
 /**
  *
  * @author Marcel
  */
-public class ModeloDao extends GenericDao<Modelo, Long>{
-
-    public ModeloDao(Class<Modelo> persistedClass) {
-        super(Modelo.class);
-    }
-    
+public  interface  ICRUD<T> {
    
+    public T ler(String nome);
+    public void editar(T e);
+    public void apagar(T e);
 }

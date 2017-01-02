@@ -43,9 +43,9 @@ public class BuscaEntidadeController extends AbstractDialogsUtils implements Ini
     void buscarButtonAction(ActionEvent event) {
         if (!campoTF.getText().isEmpty()) {
             if (tipoCKB.isSelected()) {
-
+                
             } else {
-
+                
             }
         }else{
             super.alertInfoVerifica("\"Pesquisa\"");
@@ -63,26 +63,17 @@ public class BuscaEntidadeController extends AbstractDialogsUtils implements Ini
     public void initialize(URL url, ResourceBundle rb) {
         String msg = "Digite o nome: ";
         mensagemLBL.setText(msg);
-        tipoCKB.selectedProperty().addListener(new ChangeListener<Boolean>() {
-
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if ((newValue)) {
-                    mensagemLBL.setText("Digite o código: ");
-                } else {
-                    mensagemLBL.setText(msg);
-                }
+        tipoCKB.selectedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            if ((newValue)) {
+                mensagemLBL.setText("Digite o código: ");
+            } else {
+                mensagemLBL.setText(msg);
             }
-
         });
 
-        grid.setOnKeyReleased(new EventHandler<KeyEvent>() {
-
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
-                    buscarButtonAction(null);
-                }
+        grid.setOnKeyReleased((KeyEvent event) -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                buscarButtonAction(null);
             }
         });
     }

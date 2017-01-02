@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.menus.CadastroController">
-    <children>
-            
-        <AnchorPane fx:id="anchorpane" prefHeight="500.0" prefWidth="800.0" stylesheets="@../style/menuLateral.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.menus.CadastroController">
+   <children>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="50.0" styleClass="button" vgap="50.0">
          <children>
-            <Button fx:id="fabricanteBTN" layoutX="133.0" layoutY="99.0" mnemonicParsing="false" onAction="#fabricanteButtonAction" text="Fabricante" />
-            <Button fx:id="veiculoBTN" layoutX="233.0" layoutY="250.0" mnemonicParsing="false" onAction="#veiculoButtonAction" text="Veículo" />
-            <Button fx:id="produtoBTN" layoutX="302.0" layoutY="158.0" mnemonicParsing="false" onAction="#produtoButtonAction" text="Produto" />
-            <Button fx:id="montadora" layoutX="331.0" layoutY="238.0" mnemonicParsing="false" onAction="#montadoraButtonAction" text="Montadora" />
-            <Button fx:id="prateleiraTBN" layoutX="513.0" layoutY="86.0" mnemonicParsing="false" onAction="#prateleiraButtonAction" text="Prateleira" />
-            <Button layoutX="461.0" layoutY="197.0" mnemonicParsing="false" text="d" />
-            <Button layoutX="522.0" layoutY="330.0" mnemonicParsing="false" onAction="#usuarioButtonAction" text="Usuário" />
-            <Button fx:id="categoriaBTN" layoutX="172.0" layoutY="384.0" mnemonicParsing="false" onAction="#categoriaButtonAction" text="Categoria" />
-         </children></AnchorPane>
-    </children>
-    
-</AnchorPane>
+            <Button fx:id="produtoBTN" mnemonicParsing="false" onAction="#produtoButtonAction" prefWidth="90.0" text="Produto" />
+            <Button fx:id="categoriaBTN" mnemonicParsing="false" onAction="#categoriaButtonAction" prefWidth="90.0" text="Categoria" />
+            <Button fx:id="fabricanteBTN" mnemonicParsing="false" onAction="#fabricanteButtonAction" prefWidth="90.0" text="Fabricante" />
+            <Button fx:id="prateleiraTBN" mnemonicParsing="false" onAction="#prateleiraButtonAction" prefWidth="90.0" text="Prateleira" />
+            <Button fx:id="veiculoBTN" mnemonicParsing="false" onAction="#veiculoButtonAction" prefWidth="90.0" text="Veículo" />
+            <Button mnemonicParsing="false" onAction="#grupoButtonAction" prefWidth="90.0" text="Grupo" />
+            <Button mnemonicParsing="false" onAction="#usuarioButtonAction" prefWidth="90.0" text="Usuário" />
+            <Button fx:id="montadora" mnemonicParsing="false" onAction="#montadoraButtonAction" prefWidth="90.0" text="Montadora" />
+            <Button mnemonicParsing="false" onAction="#modeloButtonAction" prefWidth="90.0" text="Modelo" />
+         </children>
+      </FlowPane>
+   </children>
+</FlowPane>

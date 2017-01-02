@@ -1,34 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.VeiculoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.MontadoraController">
    <children>
-      <GridPane layoutX="14.0" layoutY="83.0" prefHeight="159.0" prefWidth="579.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="27.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="284.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="65.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="160.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <FlowPane alignment="CENTER" prefHeight="375.0" prefWidth="575.0">
          <children>
-            <Label text="Nome:" />
-            <TextField fx:id="nomeTF" GridPane.columnIndex="1" />
-            <ComboBox fx:id="marcaCBB" prefWidth="150.0" GridPane.columnIndex="3" />
-            <Label prefHeight="17.0" prefWidth="64.0" text="Marca:" GridPane.columnIndex="2" />
+            <GridPane alignment="CENTER" prefHeight="153.0" prefWidth="422.0" vgap="5.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="66.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="104.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="89.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="87.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="82.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="codL" text="Código:" />
+                  <Label text="Modelo:" GridPane.rowIndex="2" />
+                  <TextField fx:id="codTF" disable="true" GridPane.columnIndex="1" />
+                  <ComboBox prefHeight="25.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <Label text="Montadora:" GridPane.rowIndex="1" />
+                  <ComboBox prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                  <Label text="Descrição:" GridPane.rowIndex="3" />
+                  <TextField GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="73.0" text="Quantidade de Portas:" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+               </children>
+            </GridPane>
          </children>
-      </GridPane>
-      <Button fx:id="acao" layoutX="171.0" layoutY="281.0" mnemonicParsing="false" />
-      <Button layoutX="341.0" layoutY="281.0" mnemonicParsing="false" onAction="#limparCampos" text="Limpar" />
+      </FlowPane>
+      <Group layoutX="10.0" layoutY="10.0" />
+      <HBox alignment="CENTER" layoutY="376.0" prefHeight="40.0" prefWidth="575.0" spacing="80.0">
+         <children>
+            <Button fx:id="acao" mnemonicParsing="false" prefWidth="70.0" />
+            <Button mnemonicParsing="false" onAction="#limparCampos" prefWidth="70.0" text="Limpar" />
+            <Button mnemonicParsing="false" prefWidth="70.0" text="Cancelar" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

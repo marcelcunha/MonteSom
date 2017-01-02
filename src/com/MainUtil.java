@@ -5,9 +5,9 @@
  */
 package com;
 
+import com.model.DAO.ModeloDao;
 import com.model.DAO.MontadoraDao;
-import com.model.DAO.VeiculoDao;
-import com.model.entidades.Veiculo;
+import com.model.entidades.Modelo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.NoResultException;
 
 /**
  *
@@ -49,12 +48,12 @@ public class MainUtil {
                     String[] array = str.split(";");
 
                     if (map.keySet().contains(Integer.parseInt(array[0]))) {
-                        VeiculoDao vDao = new VeiculoDao();
+                      /*  ModeloDao vDao = new ModeloDao();
                         MontadoraDao mdao = new MontadoraDao();
 
-                        Veiculo v = new Veiculo(array[1], mdao.encontrar(map.get(Integer.parseInt(array[0]))));
+                        Modelo v = new Modelo(array[1], mdao.encontrar(map.get(Integer.parseInt(array[0]))));
 
-                        vDao.salvar(v);
+                        vDao.salvar(v);*/
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(MainUtil.class.getName()).log(Level.SEVERE, null, ex);

@@ -36,3 +36,7 @@ and open the template in the editor.
     -fx-background-color: #929292;
     -fx-text-fill: white;
 }
+
+#pane{
+    -fx-alignment: center;
+}

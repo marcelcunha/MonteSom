@@ -5,17 +5,16 @@
  */
 package com.model.DAO;
 
-import com.model.entidades.Modelo;
+import com.model.entidades.Grupo;
 
 /**
  *
  * @author Marcel
  */
-public class ModeloDao extends GenericDao<Modelo, Long>{
+public class GrupoDAO extends GenericDao<Grupo, Long> {
 
-    public ModeloDao(Class<Modelo> persistedClass) {
-        super(Modelo.class);
+    public GrupoDAO() {
+        super(Grupo.class);
     }
-    
-   
+
 }

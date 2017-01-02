@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -25,15 +24,12 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Marcel
  */
 @Entity
-@Table(name = "montadora")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Montadora.findAll", query = "SELECT m FROM Montadora m"),
     @NamedQuery(name = "Montadora.findByCodMarca", query = "SELECT m FROM Montadora m WHERE m.codMarca = :codMarca"),
     @NamedQuery(name = "Montadora.findByNomeMarca", query = "SELECT m FROM Montadora m WHERE m.nomeMarca = :nomeMarca")})
 public class Montadora implements Serializable, IEntidades {
-    @OneToMany(mappedBy = "codMarca")
-    private List<Veiculo> veiculoList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +39,8 @@ public class Montadora implements Serializable, IEntidades {
     @Basic(optional = false)
     @Column(name = "nome_marca")
     private String nomeMarca;
+    @OneToMany(mappedBy = "codMarca")
+    private List<Modelo> modeloList;
 
     public Montadora() {
     }
@@ -52,6 +50,11 @@ public class Montadora implements Serializable, IEntidades {
     }
 
     public Montadora(String nomeMarca) {
+        this.nomeMarca = nomeMarca;
+    }
+
+    public Montadora(Integer codMarca, String nomeMarca) {
+        this.codMarca = codMarca;
         this.nomeMarca = nomeMarca;
     }
 
@@ -69,6 +72,15 @@ public class Montadora implements Serializable, IEntidades {
 
     public void setNomeMarca(String nomeMarca) {
         this.nomeMarca = nomeMarca;
+    }
+
+    @XmlTransient
+    public List<Modelo> getModeloList() {
+        return modeloList;
+    }
+
+    public void setModeloList(List<Modelo> modeloList) {
+        this.modeloList = modeloList;
     }
 
     @Override
@@ -94,15 +106,6 @@ public class Montadora implements Serializable, IEntidades {
     @Override
     public String toString() {
         return nomeMarca;
-    }
-
-    @XmlTransient
-    public List<Veiculo> getVeiculoList() {
-        return veiculoList;
-    }
-
-    public void setVeiculoList(List<Veiculo> veiculoList) {
-        this.veiculoList = veiculoList;
     }
     
 }

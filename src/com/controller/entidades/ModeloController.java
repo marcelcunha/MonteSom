@@ -50,17 +50,11 @@ public class ModeloController extends AbstractControllerUtils implements Initial
         marcaCBB.setItems(preencheMarcasCBB());
         marcaCBB.getSelectionModel()
                 .selectedItemProperty().addListener(
-                        new ChangeListener<Montadora>() {
-
-                            @Override
-                            public void changed(
-                                    ObservableValue<? extends Montadora> observable,
-                                    Montadora oldValue, Montadora newValue) {
-                                        modeloCBB.setDisable(false);
-                                        modeloCBB.setItems(preencheVeiculoCBB(newValue));
-                                    }
+                        (ObservableValue<? extends Montadora> observable, Montadora oldValue, Montadora newValue) -> {
+                            modeloCBB.setDisable(false);
+                            modeloCBB.setItems(preencheVeiculoCBB(newValue));
                         });
-      
+
     }
 
     @Override
@@ -101,11 +95,11 @@ public class ModeloController extends AbstractControllerUtils implements Initial
     public void preencheFormulario(IEntidades entidade) {
         Modelo m = (Modelo) entidade;
        // marcaCBB.getSelectionModel().select(m.);
-       // m.
+        // m.
     }
 
     @Override
-    public Montadora encontraEntidade(String str) {
+    public IEntidades encontraEntidade(String str) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

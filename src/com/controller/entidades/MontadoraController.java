@@ -5,15 +5,14 @@
  */
 package com.controller.entidades;
 
+import com.controller.crud.MontadoraCRUD;
 import com.controller.utils.AbstractControllerUtils;
-import com.model.DAO.MontadoraDao;
 import com.model.entidades.IEntidades;
 import com.model.entidades.Montadora;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -24,10 +23,7 @@ import javafx.scene.control.TextField;
  */
 public class MontadoraController extends AbstractControllerUtils implements Initializable {
 
-    Montadora montadora = null;
-    MontadoraDao dao = new MontadoraDao();
-    @FXML
-    private Button actionBTN;
+    private final MontadoraCRUD crud = MontadoraCRUD.getInstance();
 
     @FXML
     private Label codL;
@@ -43,9 +39,7 @@ public class MontadoraController extends AbstractControllerUtils implements Init
         String nome = nomeTF.getText();
 
         if (verificaCampos()) {
-
-            montadora = new Montadora(nome);
-            dao.salvar(montadora);
+            crud.criar(nome);
             limparCampos();
             super.alertInfoAdiciona("A Montadora", nome);
         }
@@ -54,7 +48,7 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     @Override
     public void excluir() {
         if (super.alertConfirmExclui()) {
-            //TODO chama dao e exclui item 
+            crud.apagar(null);
         }
     }
 
@@ -91,11 +85,6 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     public void preencheFormulario(IEntidades entidade) {
         Montadora m = (Montadora) entidade;
         codTF.setText(m.getCodMarca().toString());
-        nomeTF.setText(m.getNomeMarca());     
-    }
-    
-    @Override
-    public IEntidades encontraEntidade(String str){
-        return dao.encontrar(str);
+        nomeTF.setText(m.getNomeMarca());
     }
 }

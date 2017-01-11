@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" stylesheets="com/style/entidade.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.MontadoraController">
@@ -32,10 +34,12 @@
             </GridPane>
          </children>
       </FlowPane>
-      <AnchorPane layoutY="385.0" prefHeight="40.0" prefWidth="575.0">
+      <HBox alignment="CENTER" layoutY="376.0" prefHeight="40.0" prefWidth="575.0" spacing="80.0">
          <children>
-            <fx:include source="Botões.fxml" />
+            <Button fx:id="acao" mnemonicParsing="false" prefWidth="85.0" />
+            <Button fx:id="limparBTN" mnemonicParsing="false" onAction="#limparCampos" prefWidth="85.0" text="Limpar" />
+            <Button fx:id="cancelarBTN" mnemonicParsing="false" prefWidth="85.0" text="Cancelar" />
          </children>
-      </AnchorPane>
+      </HBox>
    </children>
 </AnchorPane>

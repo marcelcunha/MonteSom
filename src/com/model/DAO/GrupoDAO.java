@@ -16,5 +16,9 @@ public class GrupoDAO extends GenericDao<Grupo, Long> {
     public GrupoDAO() {
         super(Grupo.class);
     }
+     public Grupo encontrar(String usr) {
 
+        return entityManager.createNamedQuery("Grupo.findByUserUsr", Grupo.class)
+                .setParameter("userUsr", usr).getSingleResult();
+    }
 }

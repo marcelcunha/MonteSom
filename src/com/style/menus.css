@@ -17,7 +17,7 @@ and open the template in the editor.
     -fx-text-fill: #4E4F52;
    //     -fx-border-radius: 50px;
    //    -fx-background-radius: 50px;
-    -fx-background-color: #282E34;
+  //  -fx-background-color: #282E34;
     /*    -fx-font-size: 15px; */
     /*    -fx-padding: 5px 25px;*/
     -fx-font-weight:700;
@@ -35,8 +35,11 @@ and open the template in the editor.
 .button:hover{
     -fx-background-color: #929292;
     -fx-text-fill: white;
+   
 }
 
 #pane{
     -fx-alignment: center;
+    -fx-backgroundcolor: white;
 }
+

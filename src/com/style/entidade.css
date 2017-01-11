@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05/01/2017, 19:41:33
+    Author     : Marcel
+*/
+
+#limpar{
+     -fx-graphic: url('/com/view/icons/clean.png');
+}
+
+#cancelar{
+     -fx-graphic: url('/com/view/icons/cancel.png');
+}
+
+#salvar{
+     -fx-graphic: url('/com/view/icons/save.png');
+}
+
+#excluir{
+    -fx-graphic: url('/com/view/icons/delete.png');
+}

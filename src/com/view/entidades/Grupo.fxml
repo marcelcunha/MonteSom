@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.GrupoController">
    <children>
-      <FlowPane alignment="CENTER" prefHeight="375.0" prefWidth="575.0">
+      <FlowPane alignment="CENTER" prefHeight="375.0" prefWidth="575.0" stylesheets="@com/style/entidade.css">
          <children>
             <GridPane alignment="CENTER" prefHeight="310.0" prefWidth="300.0" vgap="5.0">
               <columnConstraints>
@@ -30,14 +30,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="codL" text="Código:" />
+                  <Label fx:id="codLBL" text="Código:" />
                   <Label text="Grupo:" GridPane.rowIndex="1" />
-                  <TextField fx:id="codTF" disable="true" GridPane.columnIndex="1" />
+                  <TextField id="cod" fx:id="codTF" disable="true" GridPane.columnIndex="1" />
                   <TextField fx:id="nomeTF" accessibleHelp="Nome da categoria" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                   <ComboBox fx:id="montadoraCBB" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                   <Label text="Montadora:" GridPane.rowIndex="2" />
-                  <Label fx:id="veiLBL" text="Veículos:" visible="false" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                  <ListView fx:id="veiculoLV" prefHeight="91.0" prefWidth="236.0" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                  <Label fx:id="veiLBL" text="Veículos:" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                  <ListView fx:id="veiculoLV" prefHeight="91.0" prefWidth="236.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
@@ -45,9 +45,9 @@
       <Group layoutX="10.0" layoutY="10.0" />
       <HBox alignment="CENTER" layoutY="376.0" prefHeight="40.0" prefWidth="575.0" spacing="80.0">
          <children>
-            <Button fx:id="acao" mnemonicParsing="false" prefWidth="70.0" />
-            <Button mnemonicParsing="false" onAction="#limparCampos" prefWidth="70.0" text="Limpar" />
-            <Button mnemonicParsing="false" prefWidth="70.0" text="Cancelar" />
+            <Button fx:id="acao" mnemonicParsing="false" prefWidth="85.0" />
+            <Button id="limpar" mnemonicParsing="false" onAction="#limparCampos" prefWidth="85.0" text="Limpar" />
+            <Button id="cancelar" fx:id="cancelarBTN" mnemonicParsing="false" prefWidth="85.0" text="Cancelar" />
          </children>
       </HBox>
    </children>

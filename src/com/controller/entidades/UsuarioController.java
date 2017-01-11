@@ -5,16 +5,17 @@
  */
 package com.controller.entidades;
 
+import com.services.ICRUD;
 import com.controller.utils.AbstractControllerUtils;
 import com.model.DAO.UsuarioDao;
 import com.model.entidades.IEntidades;
-import com.model.entidades.Montadora;
 import com.model.entidades.Usuario;
+import com.services.UsuarioCRUD;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -26,20 +27,22 @@ import javafx.scene.control.TextField;
  */
 public class UsuarioController extends AbstractControllerUtils implements Initializable {
 
-    @FXML
-    TextField nomeTF;
+    private UsuarioCRUD crud = UsuarioCRUD.getInstance();
 
     @FXML
-    TextField userTF;
+    private TextField nomeTF;
 
     @FXML
-    TextField emailTF;
+    private TextField userTF;
 
     @FXML
-    TextField telTF;
+    private TextField emailTF;
 
     @FXML
-    PasswordField passPF;
+    private TextField telTF;
+
+    @FXML
+    private PasswordField passPF;
 
     @FXML
     CheckBox adminCB;
@@ -49,7 +52,7 @@ public class UsuarioController extends AbstractControllerUtils implements Initia
      */
     @FXML
     protected void limparCampos() {
-        nomeTF.clear(); 
+        nomeTF.clear();
         emailTF.clear();
         passPF.clear();
         telTF.clear();
@@ -114,17 +117,17 @@ public class UsuarioController extends AbstractControllerUtils implements Initia
     }
 
     @Override
-    public void preencheFormulario(IEntidades entidade) {
-        Usuario u = (Usuario) entidade;
+    public void preencheFormulario(String nome) {
+        Usuario u = crud.ler(nome);
         
         userTF.setText(u.getUserUsr());
         nomeTF.setText(u.getNomeUsr());
         emailTF.setText(u.getEmail());
-        
+
     }
 
     @Override
-    public Montadora encontraEntidade(String str) {
+    public Button getLimparBTN() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

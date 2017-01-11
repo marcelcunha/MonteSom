@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller.crud;
+package com.model.DAO;
 
-import com.model.entidades.IEntidades;
+import com.model.entidades.Fabricante;
 
 /**
  *
  * @author Marcel
  */
-public  interface  ICRUD<T> {
-   
-    public T ler(String nome);
-    public void editar(T e);
-    public void apagar(T e);
+public class FabricanteDao extends GenericDao<Fabricante, Integer> {
+
+    public FabricanteDao() {
+        super(Fabricante.class);
+    }
+
 }

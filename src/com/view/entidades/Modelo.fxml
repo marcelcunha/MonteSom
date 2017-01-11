@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.MontadoraController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" stylesheets="com/style/entidade.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.ModeloController">
    <children>
       <FlowPane alignment="CENTER" prefHeight="375.0" prefWidth="575.0">
          <children>
@@ -29,14 +29,14 @@
                 <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="codL" text="Código:" />
+                  <Label fx:id="codLBL" text="Código:" />
                   <Label text="Modelo:" GridPane.rowIndex="2" />
-                  <TextField fx:id="codTF" disable="true" GridPane.columnIndex="1" />
+                  <TextField id="cod" fx:id="codTF" disable="true" GridPane.columnIndex="1" />
                   <TextField fx:id="nomeTF" accessibleHelp="Nome da categoria" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin></TextField>
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="marcaCBB" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                   <Label text="Montadora:" GridPane.rowIndex="1" />
                </children>
             </GridPane>
@@ -45,9 +45,9 @@
       <Group layoutX="10.0" layoutY="10.0" />
       <HBox alignment="CENTER" layoutY="376.0" prefHeight="40.0" prefWidth="575.0" spacing="80.0">
          <children>
-            <Button fx:id="acao" mnemonicParsing="false" prefWidth="70.0" />
-            <Button mnemonicParsing="false" onAction="#limparCampos" prefWidth="70.0" text="Limpar" />
-            <Button mnemonicParsing="false" prefWidth="70.0" text="Cancelar" />
+            <Button fx:id="acao" mnemonicParsing="false" prefWidth="85.0" />
+            <Button id="limpar" fx:id="limparBTN" mnemonicParsing="false" onAction="#limparCampos" prefWidth="85.0" text="Limpar" />
+            <Button id="cancelar" fx:id="cancelarBTN" mnemonicParsing="false" prefWidth="85.0" text="Cancelar" />
          </children>
       </HBox>
    </children>

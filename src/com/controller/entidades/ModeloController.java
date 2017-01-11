@@ -6,20 +6,15 @@
 package com.controller.entidades;
 
 import com.controller.utils.AbstractControllerUtils;
-import com.model.DAO.VeiculoDao;
-import com.model.entidades.IEntidades;
 import com.model.entidades.Modelo;
 import com.model.entidades.Montadora;
-import com.model.entidades.Veiculo;
+import com.services.ModeloCRUD;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -29,78 +24,87 @@ import javafx.scene.control.TextField;
  */
 public class ModeloController extends AbstractControllerUtils implements Initializable {
 
-    @FXML
-    private ComboBox<Short> portasCBB;
+    private final ModeloCRUD crud = ModeloCRUD.getInstance();
+    private Modelo m = null;
 
     @FXML
-    private ComboBox<Veiculo> modeloCBB;
+    private Label codLBL;
+
+    @FXML
+    private TextField codTF;
+
+    @FXML
+    private TextField nomeTF;
 
     @FXML
     private ComboBox<Montadora> marcaCBB;
 
-    @FXML
-    private TextField descTF;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modeloCBB.setDisable(true);
-
-        portasCBB.getItems().addAll((short) 2, (short) 3, (short) 4);
-
         marcaCBB.setItems(preencheMarcasCBB());
-        marcaCBB.getSelectionModel()
-                .selectedItemProperty().addListener(
-                        (ObservableValue<? extends Montadora> observable, Montadora oldValue, Montadora newValue) -> {
-                            modeloCBB.setDisable(false);
-                            modeloCBB.setItems(preencheVeiculoCBB(newValue));
-                        });
-
+        nomeTF.disableProperty().bind(marcaCBB.valueProperty().isNull());
     }
 
     @Override
     protected boolean verificaCampos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (nomeTF.getText().isEmpty()) {
+            super.alertInfoVerifica("\"Nome\"");
+            return false;
+
+        } else if (marcaCBB.getSelectionModel().isEmpty()) {
+            super.alertInfoVerifica("\"Marca\"");
+            return false;
+        }
+        return true;
     }
 
     @Override
+    @FXML
     public void adicionar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    protected void limparCampos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        if (verificaCampos()) {
+            m = new Modelo(nomeTF.getText(), marcaCBB.getSelectionModel().getSelectedItem());
 
-    private ObservableList<Veiculo> preencheVeiculoCBB(Montadora m) {
-        ObservableList<Veiculo> list = FXCollections.observableArrayList();
-        VeiculoDao vDao = new VeiculoDao();
-
-        list.addAll(vDao.getListFromMarca(m));
-
-        return list;
+            crud.inserir(m);
+            alertInfoAdiciona("Veículo", nomeTF.getText());
+            limparCampos();
+        }
     }
 
     @Override
     public void excluir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (super.alertConfirmExclui()) {
+            crud.apagar(m);
+            limparCampos();
+            //TODO chamar alert info exluir
+        }
     }
 
     @Override
     public void alterar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (verificaCampos()) {
+            if (super.alertConfirmAltera()) {
+                crud.editar(m);
+                limparCampos();
+                //TODO chamar alert info exluir
+            }
+        }
     }
 
     @Override
-    public void preencheFormulario(IEntidades entidade) {
-        Modelo m = (Modelo) entidade;
-       // marcaCBB.getSelectionModel().select(m.);
-        // m.
+    @FXML
+    protected void limparCampos() {
+        nomeTF.clear();
+        codTF.clear();
+        marcaCBB.getSelectionModel().clearSelection();
     }
 
     @Override
-    public IEntidades encontraEntidade(String str) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void preencheFormulario(String nome) {
+        m = crud.ler(nome);
 
+        codTF.setText(m.getCod().toString());
+        codTF.setText(m.getNome());
+        marcaCBB.setValue(m.getCodMarca());
+    }
 }

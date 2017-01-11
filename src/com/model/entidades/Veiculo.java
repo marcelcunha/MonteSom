@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Veiculo.findByCodVei", query = "SELECT v FROM Veiculo v WHERE v.codVei = :codVei"),
     @NamedQuery(name = "Veiculo.findByDescVei", query = "SELECT v FROM Veiculo v WHERE v.descVei = :descVei"),
     @NamedQuery(name = "Veiculo.findByQtdPortas", query = "SELECT v FROM Veiculo v WHERE v.qtdPortas = :qtdPortas")})
-public class Veiculo implements Serializable {
+public class Veiculo implements Serializable, IEntidades {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,6 +51,12 @@ public class Veiculo implements Serializable {
     private Modelo codMod;
     @OneToMany(mappedBy = "codVei")
     private List<Produto> produtoList;
+
+    public Veiculo(String descVei, Integer qtdPortas, Modelo codMod) {
+        this.descVei = descVei;
+        this.qtdPortas = qtdPortas;
+        this.codMod = codMod;
+    }
 
     public Veiculo() {
     }
@@ -131,7 +137,7 @@ public class Veiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.model.entidades.Veiculo[ codVei=" + codVei + " ]";
+        return descVei;
     }
     
 }

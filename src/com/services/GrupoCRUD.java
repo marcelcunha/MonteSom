@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller.crud;
+package com.services;
 
 import com.model.DAO.GrupoDAO;
-import com.model.entidades.Grupo;
 import com.model.entidades.IEntidades;
+import com.model.entidades.Grupo;
 
 /**
  *
  * @author Marcel
  */
 public class GrupoCRUD implements ICRUD<Grupo> {
-
+    
+    private final GrupoDAO dao =  new GrupoDAO();
+    
     private GrupoCRUD() {
     }
 
@@ -22,31 +24,30 @@ public class GrupoCRUD implements ICRUD<Grupo> {
         return GrupoCRUDHolder.INSTANCE;
     }
 
-    public void criar(IEntidades e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       @Override
+    public void inserir(Grupo e) {
+        dao.salvar(e);
     }
 
     @Override
     public Grupo ler(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.encontrar(nome);
     }
 
     @Override
     public void editar(Grupo e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       dao.atualizar(e);
     }
 
     @Override
     public void apagar(Grupo e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.remover(e);
     }
-
     private static class GrupoCRUDHolder {
 
         private static final GrupoCRUD INSTANCE = new GrupoCRUD();
     }
 
-    GrupoDAO dao = new GrupoDAO();
 
     public GrupoDAO getDao() {
         return dao;

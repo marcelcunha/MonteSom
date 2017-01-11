@@ -39,6 +39,12 @@ public abstract class GenericDao <T, I extends Serializable>{
        EntityManagerFactory f = Persistence.createEntityManagerFactory("MonteSomPU");
        return f.createEntityManager();
    }
+   
+   /**
+    * Salva a entidade no banco de dados
+    * @param entity
+    * @return 
+    */
    public T salvar( T entity) {
        EntityTransaction t = entityManager.getTransaction();
        t.begin();
@@ -47,7 +53,12 @@ public abstract class GenericDao <T, I extends Serializable>{
        t.commit();
        return entity;
    }
-
+   
+   /**
+    * Atualiza as informações da entidade no banco de dados
+    * @param entity - Enitdade a ser modificada
+    * @return 
+    */
    public T atualizar( T entity) {
        EntityTransaction t = entityManager.getTransaction();
        t.begin();
@@ -56,7 +67,11 @@ public abstract class GenericDao <T, I extends Serializable>{
        t.commit();
        return entity;
    }
-
+   
+   /**
+    * Remove a entidade passada como parâmetro do banco de dados
+    * @param entity - Enitdade a ser excluida
+    */
    public void remover(T entity) {
        EntityTransaction tx = entityManager.getTransaction();
        tx.begin();
@@ -67,8 +82,8 @@ public abstract class GenericDao <T, I extends Serializable>{
    }
    
    /**
-    * Retorna uma lista com todos elementos da tabela do banco de dados 
-    * @return 
+    * Retorna uma lista com todos itens da tabela do banco de dados 
+    * @return {@code List<T>} - Lista com os itens encontrados 
     */
    public List<T> getList() {
        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -78,7 +93,12 @@ public abstract class GenericDao <T, I extends Serializable>{
        
        return list;
    }
-
+   
+   /**
+    * Encontra e retorna a entidade buscada 
+    * @param id (Long) Código da entidade a ser encontrada
+    * @return  T - Entidade pesquisada
+    */
    public T encontrar(I id) {
        return entityManager.find(persistedClass, id);
    }

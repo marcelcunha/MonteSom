@@ -62,7 +62,7 @@ and open the template in the editor.
     -fx-background-position: 5%;
     -fx-background-repeat: no-repeat;
     -fx-text-alignment: right;*/
-    -fx-image: url('../icons/about.png');
+    -fx-image: url('/com/view/icons/about.png');
    
 }
 *{

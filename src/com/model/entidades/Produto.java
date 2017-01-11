@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Produto.findByCodPro", query = "SELECT p FROM Produto p WHERE p.codPro = :codPro"),
     @NamedQuery(name = "Produto.findByNomePro", query = "SELECT p FROM Produto p WHERE p.nomePro = :nomePro"),
     @NamedQuery(name = "Produto.findByDescPro", query = "SELECT p FROM Produto p WHERE p.descPro = :descPro")})
-public class Produto implements Serializable {
+public class Produto implements Serializable, IEntidades {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -147,7 +147,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "com.model.entidades.Produto[ codPro=" + codPro + " ]";
+        return nomePro;
     }
     
 }

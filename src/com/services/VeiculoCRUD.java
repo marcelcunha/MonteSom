@@ -3,51 +3,57 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller.crud;
+package com.services;
 
 import com.model.DAO.VeiculoDao;
-import com.model.entidades.IEntidades;
 import com.model.entidades.Veiculo;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Marcel
  */
-public class VeiculoCRUD implements ICRUD<Veiculo>{
-    
+public class VeiculoCRUD implements ICRUD<Veiculo> {
+
+    private VeiculoDao dao = new VeiculoDao();
+
     private VeiculoCRUD() {
     }
-    
+
     public static VeiculoCRUD getInstance() {
         return VeiculoCRUDHolder.INSTANCE;
     }
 
     @Override
+    public void inserir(Veiculo e) {
+        dao.salvar(e);
+    }
+
+    @Override
+
     public Veiculo ler(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.encontrarPorDesc(nome);
     }
 
     @Override
     public void editar(Veiculo e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.atualizar(e);
     }
 
     @Override
     public void apagar(Veiculo e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.remover(e);
     }
 
-    
     private static class VeiculoCRUDHolder {
 
         private static final VeiculoCRUD INSTANCE = new VeiculoCRUD();
     }
-    
-    VeiculoDao dao = new VeiculoDao();
+    List<String> list = new ArrayList<>();
 
     public VeiculoDao getDao() {
         return dao;
     }
-    
-    
+
 }

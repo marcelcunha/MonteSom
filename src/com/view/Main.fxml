@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1100.0" stylesheets="@style/menuPrincipal.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" stylesheets="@../style/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.MainController">
    <children>
       <BorderPane layoutX="14.0" layoutY="25.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -25,7 +25,7 @@
                <children>
                   <VBox id="lateral" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="150.0">
                      <children>
-                        <Button fx:id="cadastroBTN11" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#cadastroButtonAction" prefHeight="70.0" prefWidth="130.0" stylesheets="@../../view/style/menuPrincipal.css" text="Estoque">
+                        <Button fx:id="cadastroBTN11" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#cadastroButtonAction" prefHeight="70.0" prefWidth="130.0" text="Estoque">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -34,7 +34,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="cadastroBTN" contentDisplay="TOP" mnemonicParsing="false" onAction="#cadastroButtonAction" prefHeight="70.0" prefWidth="130.0" stylesheets="@../../view/style/menuPrincipal.css" text="Cadastro">
+                        <Button fx:id="cadastroBTN" contentDisplay="TOP" mnemonicParsing="false" onAction="#cadastroButtonAction" prefHeight="70.0" prefWidth="130.0" text="Cadastro">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -43,7 +43,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="ManutencaoBTN" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#manutencaoButtonAction" prefHeight="70.0" prefWidth="130.0" stylesheets="@../../view/style/menuPrincipal.css" text="Manutenção">
+                        <Button fx:id="ManutencaoBTN" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#manutencaoButtonAction" prefHeight="70.0" prefWidth="130.0" text="Manutenção">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

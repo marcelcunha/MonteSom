@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m"),
     @NamedQuery(name = "Modelo.findByCod", query = "SELECT m FROM Modelo m WHERE m.cod = :cod"),
     @NamedQuery(name = "Modelo.findByNome", query = "SELECT m FROM Modelo m WHERE m.nome = :nome")})
-public class Modelo implements Serializable {
+public class Modelo implements Serializable, IEntidades {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +43,11 @@ public class Modelo implements Serializable {
     @JoinColumn(name = "cod_marca", referencedColumnName = "cod_marca")
     @ManyToOne
     private Montadora codMarca;
+
+    public Modelo(String nome, Montadora codMarca) {
+        this.nome = nome;
+        this.codMarca = codMarca;
+    }
 
     public Modelo() {
     }
@@ -111,7 +116,7 @@ public class Modelo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.model.entidades.Modelo[ cod=" + cod + " ]";
+        return nome;
     }
     
 }

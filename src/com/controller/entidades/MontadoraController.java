@@ -5,14 +5,14 @@
  */
 package com.controller.entidades;
 
-import com.controller.crud.MontadoraCRUD;
+import com.services.MontadoraCRUD;
 import com.controller.utils.AbstractControllerUtils;
-import com.model.entidades.IEntidades;
 import com.model.entidades.Montadora;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -24,22 +24,29 @@ import javafx.scene.control.TextField;
 public class MontadoraController extends AbstractControllerUtils implements Initializable {
 
     private final MontadoraCRUD crud = MontadoraCRUD.getInstance();
-
-    @FXML
-    private Label codL;
+    private Montadora m = null;
 
     @FXML
     private TextField nomeTF;
 
     @FXML
+    private Label codLBL;
+
+    @FXML
     private TextField codTF;
+
+    @FXML
+    private Button acao;
+
+    @FXML
+    private Button cancelarBTN;
 
     @Override
     public void adicionar() {
         String nome = nomeTF.getText();
-
+        acao.setId("salvarAlterar");
         if (verificaCampos()) {
-            crud.criar(nome);
+            crud.inserir(nome);
             limparCampos();
             super.alertInfoAdiciona("A Montadora", nome);
         }
@@ -48,7 +55,9 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     @Override
     public void excluir() {
         if (super.alertConfirmExclui()) {
-            crud.apagar(null);
+            crud.apagar(m);
+            limparCampos();
+            //TODO chamar alert info exluir
         }
     }
 
@@ -56,7 +65,9 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     public void alterar() {
         if (verificaCampos()) {
             if (super.alertConfirmAltera()) {
-                //TODO chama dao e altera item
+                crud.editar(m);
+                limparCampos();
+                //TODO chamar alert info exluir
             }
         }
     }
@@ -64,6 +75,7 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     @FXML
     @Override
     protected void limparCampos() {
+        codTF.clear();
         nomeTF.clear();
     }
 
@@ -82,8 +94,8 @@ public class MontadoraController extends AbstractControllerUtils implements Init
     }
 
     @Override
-    public void preencheFormulario(IEntidades entidade) {
-        Montadora m = (Montadora) entidade;
+    public void preencheFormulario(String nome) {
+        m = crud.ler(nome);
         codTF.setText(m.getCodMarca().toString());
         nomeTF.setText(m.getNomeMarca());
     }

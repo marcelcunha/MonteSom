@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.MontadoraController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="575.0" stylesheets="@com/style/entidade.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.VeiculoController">
    <children>
       <FlowPane alignment="CENTER" prefHeight="375.0" prefWidth="575.0">
          <children>
@@ -32,20 +32,20 @@
                   <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="codL" text="Código:" />
+                  <Label fx:id="codLBL" text="Código:" />
                   <Label text="Modelo:" GridPane.rowIndex="2" />
                   <TextField fx:id="codTF" disable="true" GridPane.columnIndex="1" />
-                  <ComboBox prefHeight="25.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="marcaCBB" prefHeight="25.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                   <Label text="Montadora:" GridPane.rowIndex="1" />
-                  <ComboBox prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="modeloCBB" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                   <Label text="Descrição:" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                  <TextField fx:id="descTF" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="73.0" text="Quantidade de Portas:" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                  <ComboBox fx:id="portasCBB" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
@@ -57,9 +57,9 @@
       <Group layoutX="10.0" layoutY="10.0" />
       <HBox alignment="CENTER" layoutY="376.0" prefHeight="40.0" prefWidth="575.0" spacing="80.0">
          <children>
-            <Button fx:id="acao" mnemonicParsing="false" prefWidth="70.0" />
-            <Button mnemonicParsing="false" onAction="#limparCampos" prefWidth="70.0" text="Limpar" />
-            <Button mnemonicParsing="false" prefWidth="70.0" text="Cancelar" />
+            <Button fx:id="acao" mnemonicParsing="false" prefWidth="85.0" />
+            <Button id="limpar" fx:id="limparBTN" mnemonicParsing="false" onAction="#limparCampos" prefWidth="85.0" text="Limpar" />
+            <Button id="cancelar" fx:id="cancelarBTN" mnemonicParsing="false" prefWidth="85.0" text="Cancelar" />
          </children>
       </HBox>
    </children>

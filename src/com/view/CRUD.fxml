@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="file:/D:/Usuarios/Marcel/Documents/NetBeansProjects/MonteSom/src/com/view/style/crud.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@com/style/crud.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox id="top" layoutX="25.0" layoutY="28.0" prefHeight="100.0" prefWidth="750.0" styleClass="containers">
          <children>
@@ -15,12 +15,12 @@
       </HBox>
       <VBox id="buttons" alignment="CENTER" layoutX="626.0" layoutY="146.0" prefHeight="300.0" prefWidth="150.0" styleClass="containers">
          <children>
-            <Button id="add" fx:id="novoBTN" mnemonicParsing="false" onAction="#novoButtonAction" prefHeight="40.0" prefWidth="100.0" stylesheets="@style/crud.css" text="Inserir" />
+            <Button id="add" fx:id="novoBTN" mnemonicParsing="false" onAction="#novoButtonAction" prefHeight="40.0" prefWidth="100.0" text="Inserir" />
             <Button id="edit" fx:id="atualizarBTN" mnemonicParsing="false" onAction="#atualizarButtonAction" prefHeight="40.0" prefWidth="100.0" text="Atualizar" />
             <Button id="del" fx:id="excluirBTN" mnemonicParsing="false" onAction="#excluirButtonAction" prefHeight="40.0" prefWidth="100.0" text="Excluir" />
             <Button id="exit" fx:id="fecharBTN" mnemonicParsing="false" onAction="#fecharButtonAction" prefHeight="40.0" prefWidth="100.0" text="Fechar" />
          </children>
       </VBox>
-      <AnchorPane id="apane" fx:id="anchorpane" layoutX="25.0" layoutY="146.0" prefHeight="425.0" prefWidth="575.0" styleClass="containers" />
+      <AnchorPane id="apane" fx:id="anchorpane" layoutX="25.0" layoutY="146.0" maxWidth="575.0" prefHeight="425.0" prefWidth="575.0" styleClass="containers" />
    </children>
 </AnchorPane>

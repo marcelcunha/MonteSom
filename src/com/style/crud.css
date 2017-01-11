@@ -8,17 +8,17 @@
 }
 
 #add{
-    -fx-graphic: url('../icons/add.png');
+    -fx-graphic: url('/com/view/icons/add.png');
 }
 
 #del{
-    -fx-graphic: url('../icons/del.png');
+    -fx-graphic: url('/com/view/icons/del.png');
 }
 #edit{
-    -fx-graphic: url('../icons/edit.png');
+    -fx-graphic: url('/com/view/icons/edit.png');
 }
 #exit{
-    -fx-graphic: url('../icons/exit_black.png');
+    -fx-graphic: url('/com/view/icons/exit_black.png');
 }
 
 .button{

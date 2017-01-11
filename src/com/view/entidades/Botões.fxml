@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="buttonVBOX" alignment="CENTER" prefHeight="40.0" prefWidth="575.0" spacing="80.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.entidades.BotoesController">
+   <children>
+      <Button fx:id="acao" mnemonicParsing="false" prefWidth="85.0" />
+      <Button id="limpar" fx:id="limparBTN" mnemonicParsing="false" onAction="#limparCampos" prefWidth="85.0" text="Limpar" />
+      <Button id="cancelar" fx:id="cancelarBTN" mnemonicParsing="false" prefWidth="85.0" stylesheets="@../../style/entidade.css" text="Cancelar" />
+   </children>
+</HBox>

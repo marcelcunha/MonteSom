@@ -5,6 +5,7 @@
  */
 package com;
 
+import com.controller.utils.AbstractStageUtils;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -37,19 +38,7 @@ public class Main extends Application {
             stage.setTitle("Controle de estoque");
             
             /*mostra um alert de confirmação quando usuário clica no botão sair*/
-            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                
-                @Override
-                public void handle(WindowEvent event) {
-                    Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-                    a.setContentText("Deseja encerrar o programa?");
-                    
-                    a.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-                    //se não clicar no botão sim(YES) o envento é consumido e não terá ação
-                    if(!(a.showAndWait().get()==ButtonType.YES))
-                        event.consume();
-                }
-            });
+            stage.setOnCloseRequest(AbstractStageUtils.botaoFechar());
             
             stage.show();
         } catch (IOException ex) {

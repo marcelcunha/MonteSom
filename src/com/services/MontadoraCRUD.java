@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.controller.crud;
+package com.services;
 
 import com.model.DAO.MontadoraDao;
 import com.model.entidades.IEntidades;
@@ -17,6 +17,10 @@ public class MontadoraCRUD implements ICRUD<Montadora> {
 
     private final MontadoraDao dao = new MontadoraDao();
 
+    public MontadoraDao getDao() {
+        return dao;
+    }
+
     private MontadoraCRUD() {
     }
 
@@ -24,9 +28,14 @@ public class MontadoraCRUD implements ICRUD<Montadora> {
         return MontadoraCRUDHolder.INSTANCE;
     }
 
-    public void criar(String nome) {
+    public void inserir(String nome) {
         Montadora montadora = new Montadora(nome);
         dao.salvar(montadora);
+    }
+
+    @Override
+    public void inserir(Montadora e) {
+        dao.salvar(e);
     }
 
     @Override

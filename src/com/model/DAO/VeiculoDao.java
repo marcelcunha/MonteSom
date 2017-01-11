@@ -18,20 +18,36 @@ import javax.persistence.criteria.Root;
  * @author Marcel
  */
 public class VeiculoDao extends GenericDao<Veiculo, Long> {
-    
+
     public VeiculoDao() {
         super(Veiculo.class);
     }
-    
-     public List<Veiculo> getListFromMarca(Montadora m) {
-       CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-       CriteriaQuery<Veiculo> query = builder.createQuery(Veiculo.class);
-       
-       Root<Veiculo>  root = query.from(Veiculo.class);
-       query.select(root);
-        ParameterExpression<Integer> p = builder.parameter(Integer.class);
-       query.where(builder.equal(root.get("codMarca"), m));
-       query.orderBy(builder.asc(root.get("nome")));
-       return entityManager.createQuery(query).getResultList();
-   }
+
+    public List<Veiculo> getListFromMarca(Montadora m) {
+        try {
+            CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+            CriteriaQuery<Veiculo> query = builder.createQuery(Veiculo.class);
+
+            Root<Veiculo> root = query.from(Veiculo.class);
+            query.select(root);
+            ParameterExpression<Integer> p = builder.parameter(Integer.class);
+            query.where(builder.equal(root.get("codMarca"), m));
+            query.orderBy(builder.asc(root.get("nome")));
+            return entityManager.createQuery(query).getResultList();
+        }catch(IllegalArgumentException e){
+            
+        }
+        return null;
+    }
+
+    /**
+     * Encontra o veículo pela sua descrição
+     *
+     * @param desc Descrição do veículo
+     * @return Veículo encontrado
+     */
+    public Veiculo encontrarPorDesc(String desc) {
+        return entityManager.createNamedQuery("Veiculo.findByDescVei", Veiculo.class)
+                .setParameter("nome", desc).getSingleResult();
+    }
 }
